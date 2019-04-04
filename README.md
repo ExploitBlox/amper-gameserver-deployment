@@ -3,11 +3,11 @@
 </h1>
 
 <h3 align = "center">
+      <img src=".github/images/amper-logo.png" alt="alt text" width="100"/>
+   <br/>
   Amper the next generation Software
 </h3>
 <br/>
-
-><b>Important Note:</b> Amper is actually in development phase.
 
 <hr>
 
