@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'org.amperpowered'
+version '2019.04.4-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    compile group: 'com.github.spotbugs', name: 'spotbugs', version: '3.1.12'
+    compile group: 'com.google.guava', name: 'guava', version: '27.0.1-jre'
+    compile group: 'info.picocli', name: 'picocli', version: '3.9.4'
+    compile group: 'io.grpc', name: 'grpc-core', version: '1.19.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
