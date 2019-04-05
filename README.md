@@ -1,13 +1,16 @@
 <h1 align="center">
+   <img src=".github/images/amper-logo.png" alt="alt text" width="150"/>
+   <br/>
    Amper
 </h1>
+
 <h3 align = "center">
-   <img src=".github/images/amper-logo.png" alt="alt text" width="100"/>
+    <img alt="MIT-Licensed" 
+       src="https://img.shields.io/badge/License-MIT-blue.svg">
    <br/>
    Easy gameserver deployment with Amper
 </h3>
 <br/>
-<hr>
 <h4 align ="center">
    Information
 </h4>
