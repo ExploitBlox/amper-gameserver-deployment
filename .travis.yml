@@ -6,6 +6,9 @@ dist: trusty
 jdk:
   - openjdk8
 
+before_install:
+  - chmod +x gradlew
+
 script:
   - ./gradlew build
 
