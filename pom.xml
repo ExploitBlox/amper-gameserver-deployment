@@ -6,7 +6,7 @@
 
   <groupId>org.amperpowered</groupId>
   <artifactId>amper</artifactId>
-  <version>2019.04.5-SNAPSHOT</version>
+  <version>2019.05.5-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
