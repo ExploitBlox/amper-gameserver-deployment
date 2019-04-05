@@ -8,7 +8,6 @@
    Easy gameserver deployment with Amper
 </h3>
 <br/>
-<hr>
 <h4 align ="center">
    Information
 </h4>
