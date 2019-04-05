@@ -1,8 +1,9 @@
 <h1 align="center">
+   <img src=".github/images/amper-logo.png" alt="alt text" width="150"/>
+   <br/>
    Amper
 </h1>
 <h3 align = "center">
-   <img src=".github/images/amper-logo.png" alt="alt text" width="100"/>
    <br/>
    Easy gameserver deployment with Amper
 </h3>
