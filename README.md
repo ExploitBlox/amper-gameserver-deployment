@@ -7,6 +7,9 @@
 <h3 align = "center">
     <img alt="MIT-Licensed" 
        src="https://img.shields.io/badge/License-MIT-blue.svg">
+   
+    <img alt="Codacy" 
+       src="https://api.codacy.com/project/badge/Grade/5ed0733ff7664d33981a227cb3eccb6d">   
    <br/>
    Easy gameserver deployment with Amper
 </h3>
