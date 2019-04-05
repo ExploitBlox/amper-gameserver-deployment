@@ -3,7 +3,10 @@
    <br/>
    Amper
 </h1>
+
 <h3 align = "center">
+    <img alt="MIT-Licensed" 
+       src="https://img.shields.io/badge/License-MIT-blue.svg">
    <br/>
    Easy gameserver deployment with Amper
 </h3>
