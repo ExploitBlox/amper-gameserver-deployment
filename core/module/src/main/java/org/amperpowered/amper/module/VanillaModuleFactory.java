@@ -13,6 +13,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.amperpowered.amper.module.internal.AmperModule;
+import org.amperpowered.amper.module.internal.ModuleIndex;
+import org.amperpowered.amper.module.internal.ModuleIndexRegistry;
+import org.amperpowered.amper.module.internal.ModuleParser;
+import org.amperpowered.amper.module.internal.ModuleScanner;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaModuleFactory implements ModuleFactory {

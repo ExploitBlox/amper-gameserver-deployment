@@ -4,11 +4,11 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.module;
+package org.amperpowered.amper.module.internal;
 
 import com.google.common.base.Preconditions;
-import org.amperpowered.amper.module.annotation.Module;
-import org.amperpowered.amper.module.annotation.Requires;
+import org.amperpowered.amper.module.internal.annotation.Module;
+import org.amperpowered.amper.module.internal.annotation.Requires;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaModuleParser implements ModuleParser {

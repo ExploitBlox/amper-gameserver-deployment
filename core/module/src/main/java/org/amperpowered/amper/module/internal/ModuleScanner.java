@@ -4,7 +4,7 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.module;
+package org.amperpowered.amper.module.internal;
 
 import java.io.IOException;
 import java.nio.file.Path;

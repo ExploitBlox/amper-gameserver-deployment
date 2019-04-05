@@ -9,6 +9,7 @@ package org.amperpowered.amper.module;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
+import org.amperpowered.amper.module.internal.AmperModule;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ModuleFactory {
