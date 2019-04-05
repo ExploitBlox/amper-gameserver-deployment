@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'org.amperpowered'
-version '2019.04.4-SNAPSHOT'
+version '2019.04.5-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
