@@ -7,7 +7,7 @@ jdk:
   - openjdk8
 
 script:
-  - mvn
+  - ./gradlew build
 
 branches:
   only:
