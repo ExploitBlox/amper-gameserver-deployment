@@ -13,5 +13,5 @@
 </h4>
 Amper is an open source software which is suitable for Game servers, mainly the software focuses on very high scalability and fail-safe operation.
 <h5 align = "center">
-   <a href="https://discord.gg/dFrEWfE"> <img src=".github/images/discord-logo.png" alt="alt text" width="75"/></a>
+   <a href="https://discord.gg/dFrEWfE"> <img src=".github/images/discord-logo.png" alt="alt text" width="100"/></a>
 </h5>
