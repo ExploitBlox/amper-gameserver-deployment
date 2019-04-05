@@ -5,7 +5,7 @@
 <h3 align = "center">
       <img src=".github/images/amper-logo.png" alt="alt text" width="100"/>
    <br/>
-  Amper the next generation Software
+  Amper the next Gameserver deployment Software
 </h3>
 <br/>
 
