@@ -19,6 +19,11 @@
       <artifactId>bootstrap</artifactId>
       <version>2019.04.6-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>org.amperpowered.amper.core</groupId>
+      <artifactId>guice</artifactId>
+      <version>2019.04.6-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
 </project>
