@@ -6,6 +6,7 @@
 /out
 **/logs
 .idea_modules/
+classes/
 cmake-build-debug/
 cmake-build-release/
 atlassian-ide-plugin.xml
