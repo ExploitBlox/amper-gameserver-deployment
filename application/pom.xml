@@ -13,4 +13,12 @@
   <groupId>org.amperpowered.amper</groupId>
   <artifactId>application</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.amperpowered.amper.core</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>2019.04.6-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
 </project>

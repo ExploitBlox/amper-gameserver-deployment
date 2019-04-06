@@ -1,8 +1,13 @@
 package org.amperpowered.amper.application;
 
+import org.amperpowered.core.bootstrap.BootstrapFactory;
+
 public class AmperApplication {
 
   public static void main(String[] arguments) {
-    System.out.println("Initial Amper application...");
+    BootstrapFactory bootstrapFactory = BootstrapFactory.vanilla();
+
+    bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
+        .ifPresent(AmperApplicationBootstrap::initialize);
   }
 }
