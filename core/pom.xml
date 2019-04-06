@@ -20,6 +20,7 @@
     <module>logger</module>
     <module>bootstrap</module>
     <module>guice</module>
+    <module>config</module>
   </modules>
 
 
