@@ -7,7 +7,12 @@
 package org.amperpowered.amper.application;
 
 import com.google.inject.AbstractModule;
+import org.amperpowered.amper.core.config.ConfigFactory;
 
 final class AmperApplicationGuiceModule extends AbstractModule {
 
+  @Override
+  protected void configure() {
+    this.bind(ConfigFactory.class).toInstance(ConfigFactory.vanilla());
+  }
 }
