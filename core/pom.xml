@@ -17,6 +17,7 @@
   <modules>
     <module>module</module>
     <module>network</module>
+    <module>logger</module>
   </modules>
 
 </project>
