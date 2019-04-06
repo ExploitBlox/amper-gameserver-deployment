@@ -3,23 +3,14 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <packaging>pom</packaging>
 
   <parent>
-    <groupId>org.amperpowered</groupId>
-    <artifactId>amper</artifactId>
+    <groupId>org.amperpowered.amper</groupId>
+    <artifactId>core</artifactId>
     <version>2019.04.6-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.amperpowered.amper</groupId>
-  <artifactId>core</artifactId>
-
-  <modules>
-    <module>module</module>
-    <module>network</module>
-    <module>logger</module>
-    <module>bootstrap</module>
-  </modules>
-
+  <groupId>org.amperpowered.amper.core</groupId>
+  <artifactId>bootstrap</artifactId>
 
 </project>
