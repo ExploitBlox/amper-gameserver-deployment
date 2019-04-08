@@ -9,7 +9,7 @@ package org.amperpowered.amper.application.internal;
 import com.google.inject.AbstractModule;
 import org.amperpowered.amper.core.config.ConfigFactory;
 
-final class AmperApplicationGuiceModule extends AbstractModule {
+final class ApplicationGuiceModule extends AbstractModule {
 
   @Override
   protected void configure() {
