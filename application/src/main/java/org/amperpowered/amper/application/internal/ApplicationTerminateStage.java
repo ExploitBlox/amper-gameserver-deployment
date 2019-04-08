@@ -6,6 +6,19 @@
  */
 package org.amperpowered.amper.application.internal;
 
+import org.amperpowered.amper.core.stage.internal.annotation.Stage;
+import org.amperpowered.amper.module.ModuleFactory;
+import org.amperpowered.amper.module.internal.AmperModule;
+import org.amperpowered.amper.module.internal.context.TerminateContext;
+
 public class ApplicationTerminateStage {
 
+  @Stage(1)
+  public void prepareModules() {
+    ModuleFactory moduleFactory = ModuleFactory.vanilla();
+
+    for (AmperModule amperModule : moduleFactory.amperModules()) {
+      amperModule.terminate(new TerminateContext());
+    }
+  }
 }
