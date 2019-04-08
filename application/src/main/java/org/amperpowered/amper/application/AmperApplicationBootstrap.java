@@ -19,4 +19,9 @@ public class AmperApplicationBootstrap implements Bootstrap {
     guiceFactory.createInjector(new AmperApplicationGuiceModule());
   }
 
+  @Override
+  public void terminate() {
+
+  }
+
 }

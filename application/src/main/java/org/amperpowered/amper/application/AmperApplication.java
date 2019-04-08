@@ -15,5 +15,10 @@ public class AmperApplication {
 
     bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
         .ifPresent(AmperApplicationBootstrap::initialize);
+
+    Runtime.getRuntime()
+        .addShutdownHook(new Thread(() -> bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
+            .ifPresent(AmperApplicationBootstrap::terminate)));
+
   }
 }
