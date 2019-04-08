@@ -6,11 +6,6 @@
  */
 package org.amperpowered.amper.application.internal;
 
-import org.amperpowered.amper.core.stage.internal.annotation.Stage;
-
 public class ApplicationTerminateStage {
 
-  @Stage(0)
-  public void printTerminateMessage() {
-  }
 }
