@@ -14,10 +14,12 @@ final class IdentityBuilder implements Identity {
 
   private String name;
   private String host;
+  private int port;
 
   IdentityBuilder() {
     this.name = "application-01";
     this.host = "127.0.0.1";
+    this.port = 25572;
   }
 
   @NonNull
@@ -47,6 +49,18 @@ final class IdentityBuilder implements Identity {
   }
 
   @Override
+  public int port() {
+    return this.port;
+  }
+
+  @NonNull
+  @Override
+  public Identity withPort(int port) {
+    this.port = port;
+    return this;
+  }
+
+  @Override
   public boolean equals(Object other) {
     if (this == other) {
       return true;
@@ -58,13 +72,14 @@ final class IdentityBuilder implements Identity {
 
     IdentityBuilder that = (IdentityBuilder) other;
 
-    return this.name.equals(that.name) &&
+    return this.port == that.port &&
+        this.name.equals(that.name) &&
         this.host.equals(that.host);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.name, this.host);
+    return Objects.hash(this.name, this.host, this.port);
   }
 
   @Override
@@ -72,6 +87,7 @@ final class IdentityBuilder implements Identity {
     return "Identity{" +
         "name='" + this.name + '\'' +
         ", host='" + this.host + '\'' +
+        ", port=" + this.port +
         '}';
   }
 }

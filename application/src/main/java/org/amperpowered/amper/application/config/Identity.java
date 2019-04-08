@@ -26,4 +26,9 @@ public interface Identity {
 
   @NonNull
   Identity withHost(@NonNull String host);
+
+  int port();
+
+  @NonNull
+  Identity withPort(int port);
 }
