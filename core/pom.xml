@@ -21,6 +21,7 @@
     <module>bootstrap</module>
     <module>guice</module>
     <module>config</module>
+    <module>stage</module>
   </modules>
 
 
