@@ -14,8 +14,6 @@ public class ApplicationBootstrap implements Bootstrap {
 
   @Override
   public void initialize() {
-    System.out.println("Initial Amper application...");
-
     GuiceFactory guiceFactory = GuiceFactory.vanilla();
     guiceFactory.createInjector(new ApplicationGuiceModule());
 

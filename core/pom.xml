@@ -17,7 +17,6 @@
   <modules>
     <module>module</module>
     <module>network</module>
-    <module>logger</module>
     <module>bootstrap</module>
     <module>guice</module>
     <module>config</module>
