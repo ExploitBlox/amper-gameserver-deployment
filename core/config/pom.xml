@@ -22,7 +22,7 @@
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>guice</artifactId>
-      <version>2019.04.6-SNAPSHOT</version>
+      <version>2019.04.8-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
