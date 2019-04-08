@@ -6,6 +6,7 @@
  */
 package org.amperpowered.amper.application;
 
+import org.amperpowered.amper.application.internal.AmperApplicationBootstrap;
 import org.amperpowered.core.bootstrap.BootstrapFactory;
 
 public class AmperApplication {

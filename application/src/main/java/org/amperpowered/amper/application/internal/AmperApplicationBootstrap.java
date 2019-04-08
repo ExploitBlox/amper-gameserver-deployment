@@ -4,7 +4,7 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.application;
+package org.amperpowered.amper.application.internal;
 
 import org.amperpowered.amper.core.guice.GuiceFactory;
 import org.amperpowered.core.bootstrap.internal.Bootstrap;
