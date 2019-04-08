@@ -7,6 +7,7 @@
 package org.amperpowered.amper.application.internal;
 
 import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.core.bootstrap.internal.Bootstrap;
 
 public class ApplicationBootstrap implements Bootstrap {
@@ -17,11 +18,15 @@ public class ApplicationBootstrap implements Bootstrap {
 
     GuiceFactory guiceFactory = GuiceFactory.vanilla();
     guiceFactory.createInjector(new ApplicationGuiceModule());
+
+    StageFactory stageFactory = StageFactory.vanilla();
+    stageFactory.processingStage(ApplicationStartStage.class);
   }
 
   @Override
   public void terminate() {
-
+    StageFactory stageFactory = StageFactory.vanilla();
+    stageFactory.processingStage(ApplicationTerminateStage.class);
   }
 
 }
