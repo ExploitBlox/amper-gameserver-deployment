@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import org.amperpowered.amper.core.guice.GuiceFactory;
 import org.amperpowered.amper.core.stage.internal.annotation.Stage;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -22,6 +24,8 @@ final class VanillaStageClassLoader implements StageClassLoader {
   @Override
   public List<SingleStage> loadStageClass(@NonNull Class<?> stageClass) {
     Preconditions.checkNotNull(stageClass, "stageClass cannot be null!");
+
+    this.printInformation(stageClass);
 
     List<SingleStage> stages = new ArrayList<>();
 
@@ -36,7 +40,20 @@ final class VanillaStageClassLoader implements StageClassLoader {
     Collections.sort(stages);
 
     return stages;
+  }
 
+  private void printInformation(@NonNull Class<?> stageClass) {
+    Preconditions.checkNotNull(stageClass, "stageClass cannot be null!");
+
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+
+    Optional<?> instance = guiceFactory.getInstance(stageClass);
+
+    if (instance.isPresent()) {
+      Object object = instance.get();
+
+      System.out.println("Running stage at class " + object.getClass());
+    }
   }
 
   @NonNull
