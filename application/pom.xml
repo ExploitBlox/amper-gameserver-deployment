@@ -34,6 +34,11 @@
       <artifactId>stage</artifactId>
       <version>2019.04.8-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>org.amperpowered.amper.core</groupId>
+      <artifactId>logger</artifactId>
+      <version>2019.04.8-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
 </project>
