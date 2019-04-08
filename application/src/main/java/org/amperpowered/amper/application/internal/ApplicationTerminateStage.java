@@ -6,6 +6,16 @@
  */
 package org.amperpowered.amper.application.internal;
 
+import org.amperpowered.amper.core.stage.internal.annotation.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ApplicationTerminateStage {
 
+  private static final Logger LOGGER = LogManager.getLogger(ApplicationTerminateStage.class);
+
+  @Stage(0)
+  public void printTerminateMessage() {
+    LOGGER.info("Terminate the amper application...");
+  }
 }
