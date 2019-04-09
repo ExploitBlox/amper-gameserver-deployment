@@ -8,7 +8,7 @@
   <parent>
     <groupId>org.amperpowered</groupId>
     <artifactId>amper</artifactId>
-    <version>2019.04.8-SNAPSHOT</version>
+    <version>2019.04.9-SNAPSHOT</version>
   </parent>
 
   <groupId>org.amperpowered.amper</groupId>
@@ -21,6 +21,7 @@
     <module>guice</module>
     <module>config</module>
     <module>stage</module>
+    <module>web</module>
   </modules>
 
 

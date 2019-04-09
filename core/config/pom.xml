@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.amperpowered.amper</groupId>
     <artifactId>core</artifactId>
-    <version>2019.04.8-SNAPSHOT</version>
+    <version>2019.04.9-SNAPSHOT</version>
   </parent>
 
   <groupId>org.amperpowered.amper.core</groupId>
@@ -22,7 +22,7 @@
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>guice</artifactId>
-      <version>2019.04.8-SNAPSHOT</version>
+      <version>2019.04.9-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

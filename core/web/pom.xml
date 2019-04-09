@@ -11,6 +11,14 @@
   </parent>
 
   <groupId>org.amperpowered.amper.core</groupId>
-  <artifactId>module</artifactId>
+  <artifactId>web</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-web</artifactId>
+      <version>3.7.0</version>
+    </dependency>
+  </dependencies>
 
 </project>
