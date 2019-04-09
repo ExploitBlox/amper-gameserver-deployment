@@ -15,10 +15,12 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 final class ApplicationConfigBuilder implements ApplicationConfig {
 
   private Identity identity;
+  private WebConfig webConfig;
   private List<Identity> applications;
 
   ApplicationConfigBuilder() {
     this.identity = Identity.begin();
+    this.webConfig = WebConfig.begin();
     this.applications = Collections.emptyList();
   }
 
@@ -32,6 +34,19 @@ final class ApplicationConfigBuilder implements ApplicationConfig {
   @Override
   public ApplicationConfig withIdentity(@NonNull Identity identity) {
     this.identity = Preconditions.checkNotNull(identity, "identity cannot be null!");
+    return this;
+  }
+
+  @NonNull
+  @Override
+  public WebConfig webConfig() {
+    return this.webConfig;
+  }
+
+  @NonNull
+  @Override
+  public ApplicationConfig withWebConfig(@NonNull WebConfig webConfig) {
+    this.webConfig = Preconditions.checkNotNull(webConfig, "webConfig cannot be null!");
     return this;
   }
 
@@ -57,21 +72,24 @@ final class ApplicationConfigBuilder implements ApplicationConfig {
     if (!(other instanceof ApplicationConfigBuilder)) {
       return false;
     }
+
     ApplicationConfigBuilder that = (ApplicationConfigBuilder) other;
 
     return this.identity.equals(that.identity) &&
+        this.webConfig.equals(that.webConfig) &&
         this.applications.equals(that.applications);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.identity, this.applications);
+    return Objects.hash(this.identity, this.webConfig, this.applications);
   }
 
   @Override
   public String toString() {
     return "ApplicationConfig{" +
         "identity=" + this.identity +
+        ", webConfig=" + this.webConfig +
         ", applications=" + this.applications +
         '}';
   }

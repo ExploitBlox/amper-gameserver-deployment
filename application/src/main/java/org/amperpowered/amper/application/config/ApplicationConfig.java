@@ -23,6 +23,12 @@ public interface ApplicationConfig {
   ApplicationConfig withIdentity(@NonNull Identity identity);
 
   @NonNull
+  WebConfig webConfig();
+
+  @NonNull
+  ApplicationConfig withWebConfig(@NonNull WebConfig webConfig);
+
+  @NonNull
   List<Identity> applications();
 
   @NonNull
