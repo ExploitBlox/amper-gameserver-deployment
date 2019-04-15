@@ -1,4 +1,4 @@
-package org.amperpowered.amper.application.config;
+package org.amperpowered.amper.application.internal.config;
 
 import com.google.common.base.Preconditions;
 import java.util.Objects;

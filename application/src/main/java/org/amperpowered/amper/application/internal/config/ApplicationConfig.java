@@ -4,7 +4,7 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.application.config;
+package org.amperpowered.amper.application.internal.config;
 
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.NonNull;
