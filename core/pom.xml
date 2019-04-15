@@ -22,6 +22,7 @@
     <module>config</module>
     <module>stage</module>
     <module>web</module>
+    <module>service</module>
   </modules>
 
 
