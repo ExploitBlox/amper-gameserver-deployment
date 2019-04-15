@@ -24,6 +24,12 @@ public interface ServiceModel {
   ServiceModel withName(@NonNull String name);
 
   @NonNull
+  Class<?> bindingClass();
+
+  @NonNull
+  ServiceModel withBindingClass(@NonNull Class<?> bindingClass);
+
+  @NonNull
   Optional<Method> enablingMethod();
 
   @NonNull

@@ -10,6 +10,7 @@ import com.google.common.base.Preconditions;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Optional;
+import org.amperpowered.amper.core.service.internal.annotation.BindWith;
 import org.amperpowered.amper.core.service.internal.annotation.Runnable;
 import org.amperpowered.amper.core.service.internal.annotation.Service;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -21,14 +22,16 @@ final class VanillaServiceComposer implements ServiceComposer {
   public Optional<ServiceModel> composeService(@NonNull Class<?> serviceClass) {
     Preconditions.checkNotNull(serviceClass, "serviceClass cannot be null!");
 
-    if (!serviceClass.isAnnotationPresent(Service.class)) {
+    if (!serviceClass.isAnnotationPresent(Service.class) && !serviceClass.isAnnotationPresent(BindWith.class)) {
       return Optional.empty();
     }
 
     Service service = serviceClass.getDeclaredAnnotation(Service.class);
+    BindWith bindWith = serviceClass.getDeclaredAnnotation(BindWith.class);
 
     ServiceModel serviceModel = ServiceModel.begin()
-        .withName(service.value());
+        .withName(service.value())
+        .withBindingClass(bindWith.value());
 
     this.composeMethods(serviceModel, serviceClass.getDeclaredMethods());
 

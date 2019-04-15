@@ -35,9 +35,11 @@ final class VanillaServiceFactory implements ServiceFactory {
 
     optionalServiceModel.ifPresent(serviceModel -> {
       if (serviceLifeCycle.equals(ServiceLifeCycle.ENABLING)) {
-        serviceModel.enablingMethod().ifPresent(SERVICE_METHOD_INVOKER::invoke);
+        serviceModel.enablingMethod()
+            .ifPresent(method -> SERVICE_METHOD_INVOKER.invoke(method, serviceModel.bindingClass()));
       } else if (serviceLifeCycle.equals(ServiceLifeCycle.DISABLING)) {
-        serviceModel.disablingMethod().ifPresent(SERVICE_METHOD_INVOKER::invoke);
+        serviceModel.disablingMethod()
+            .ifPresent(method -> SERVICE_METHOD_INVOKER.invoke(method, serviceModel.bindingClass()));
       }
     });
   }

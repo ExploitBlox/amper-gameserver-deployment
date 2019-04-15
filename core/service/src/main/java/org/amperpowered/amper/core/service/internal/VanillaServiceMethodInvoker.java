@@ -11,14 +11,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public class VanillaServiceMethodInvoker implements ServiceMethodInvoker {
+final class VanillaServiceMethodInvoker implements ServiceMethodInvoker {
 
   @Override
-  public void invoke(@NonNull Method method) {
+  public void invoke(@NonNull Method method, @NonNull Class<?> bindingClass) {
     Preconditions.checkNotNull(method, "method cannot be null!");
+    Preconditions.checkNotNull(bindingClass, "bindingClass cannot be null!");
 
     try {
-      method.invoke(method.getDeclaringClass().newInstance());
+      method.invoke(bindingClass.newInstance());
     } catch (IllegalAccessException | InvocationTargetException | InstantiationException cause) {
       cause.printStackTrace();
     }

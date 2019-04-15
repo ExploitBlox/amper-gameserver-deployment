@@ -16,5 +16,5 @@ public interface ServiceMethodInvoker {
     return new VanillaServiceMethodInvoker();
   }
 
-  void invoke(@NonNull Method method);
+  void invoke(@NonNull Method method, @NonNull Class<?> bindingClass);
 }

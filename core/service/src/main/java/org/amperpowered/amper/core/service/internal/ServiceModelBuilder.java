@@ -15,11 +15,13 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 final class ServiceModelBuilder implements ServiceModel {
 
   private String name;
+  private Class<?> bindingClass;
   private Method enablingMethod;
   private Method disablingMethod;
 
   ServiceModelBuilder() {
     this.name = "undefined";
+    this.bindingClass = null;
     this.enablingMethod = null;
     this.disablingMethod = null;
   }
@@ -34,6 +36,19 @@ final class ServiceModelBuilder implements ServiceModel {
   @Override
   public ServiceModel withName(@NonNull String name) {
     this.name = Preconditions.checkNotNull(name, "name cannot be null!");
+    return this;
+  }
+
+  @NonNull
+  @Override
+  public Class<?> bindingClass() {
+    return this.bindingClass;
+  }
+
+  @NonNull
+  @Override
+  public ServiceModel withBindingClass(@NonNull Class<?> bindingClass) {
+    this.bindingClass = Preconditions.checkNotNull(bindingClass, "bindingClass cannot be null!");
     return this;
   }
 
@@ -76,19 +91,25 @@ final class ServiceModelBuilder implements ServiceModel {
     ServiceModelBuilder that = (ServiceModelBuilder) other;
 
     return this.name.equals(that.name) &&
+        this.bindingClass.equals(that.bindingClass) &&
         this.enablingMethod.equals(that.enablingMethod) &&
         this.disablingMethod.equals(that.disablingMethod);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.name, this.enablingMethod, this.disablingMethod);
+    return Objects.hash(
+        this.name,
+        this.bindingClass,
+        this.enablingMethod,
+        this.disablingMethod);
   }
 
   @Override
   public String toString() {
     return "ServiceModel{" +
         "name='" + this.name + '\'' +
+        ", bindingClass=" + this.bindingClass +
         ", enablingMethod=" + this.enablingMethod +
         ", disablingMethod=" + this.disablingMethod +
         '}';
