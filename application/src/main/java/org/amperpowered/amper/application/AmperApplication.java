@@ -6,7 +6,6 @@
  */
 package org.amperpowered.amper.application;
 
-import org.amperpowered.amper.application.internal.ApplicationBootstrap;
 import org.amperpowered.core.bootstrap.BootstrapFactory;
 
 public class AmperApplication {
@@ -14,12 +13,12 @@ public class AmperApplication {
   public static void main(String[] arguments) {
     BootstrapFactory bootstrapFactory = BootstrapFactory.vanilla();
 
-    bootstrapFactory.scanBootstrapClass(ApplicationBootstrap.class)
-        .ifPresent(ApplicationBootstrap::initialize);
+    bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
+        .ifPresent(AmperApplicationBootstrap::initialize);
 
     Runtime.getRuntime()
-        .addShutdownHook(new Thread(() -> bootstrapFactory.scanBootstrapClass(ApplicationBootstrap.class)
-            .ifPresent(ApplicationBootstrap::terminate)));
+        .addShutdownHook(new Thread(() -> bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
+            .ifPresent(AmperApplicationBootstrap::terminate)));
 
   }
 }

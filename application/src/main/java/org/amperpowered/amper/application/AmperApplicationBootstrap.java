@@ -4,27 +4,27 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.application.internal;
+package org.amperpowered.amper.application;
 
 import org.amperpowered.amper.core.guice.GuiceFactory;
 import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.core.bootstrap.internal.Bootstrap;
 
-public class ApplicationBootstrap implements Bootstrap {
+public class AmperApplicationBootstrap implements Bootstrap {
 
   @Override
   public void initialize() {
     GuiceFactory guiceFactory = GuiceFactory.vanilla();
-    guiceFactory.createInjector(new ApplicationGuiceModule());
+    guiceFactory.createInjector(new AmperApplicationGuiceModule());
 
     StageFactory stageFactory = StageFactory.vanilla();
-    stageFactory.processingStage(ApplicationStartStage.class);
+    stageFactory.processingStage(AmperApplicationStartStage.class);
   }
 
   @Override
   public void terminate() {
     StageFactory stageFactory = StageFactory.vanilla();
-    stageFactory.processingStage(ApplicationTerminateStage.class);
+    stageFactory.processingStage(AmperApplicationTerminateStage.class);
   }
 
 }
