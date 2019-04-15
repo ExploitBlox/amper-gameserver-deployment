@@ -17,6 +17,12 @@ public interface ApplicationConfig {
   }
 
   @NonNull
+  String service();
+
+  @NonNull
+  ApplicationConfig withService(@NonNull String service);
+
+  @NonNull
   Identity identity();
 
   @NonNull
