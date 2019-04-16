@@ -14,13 +14,13 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaBootstrapFactory implements BootstrapFactory {
 
-  private static final BootstrapClassScanner BOOTSTRAP_CLASS_SCANNER = BootstrapClassScanner.vanilla();
-
   @NonNull
   @Override
   public <T extends Bootstrap> Optional<T> scanBootstrapClass(@NonNull Class<T> bootstrapClass) {
     Preconditions.checkNotNull(bootstrapClass, "bootstrapClass cannot be null!");
 
-    return BOOTSTRAP_CLASS_SCANNER.scanBootstrapClass(bootstrapClass);
+    BootstrapClassScanner bootstrapClassScanner = BootstrapClassScanner.vanilla();
+
+    return bootstrapClassScanner.scanBootstrapClass(bootstrapClass);
   }
 }
