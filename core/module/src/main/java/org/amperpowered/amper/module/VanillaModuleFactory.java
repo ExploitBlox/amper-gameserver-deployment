@@ -24,8 +24,6 @@ import org.pmw.tinylog.Logger;
 final class VanillaModuleFactory implements ModuleFactory {
 
   private static final ModuleIndexRegistry MODULE_INDEX_REGISTRY = ModuleIndexRegistry.vanilla();
-  private static final ModuleScanner MODULE_SCANNER = ModuleScanner.vanilla();
-  private static final ModuleParser MODULE_PARSER = ModuleParser.vanilla();
 
   @Override
   public void registerModulesRecurvesly(@NonNull Path modulePath) {
@@ -34,8 +32,11 @@ final class VanillaModuleFactory implements ModuleFactory {
     Logger.info("Registering modules...");
 
     try {
-      for (Class<?> amperModuleClass : MODULE_SCANNER.scanModules(modulePath)) {
-        ModuleIndex moduleIndex = MODULE_PARSER.parseModule(amperModuleClass);
+      ModuleScanner moduleScanner = ModuleScanner.vanilla();
+      ModuleParser moduleParser = ModuleParser.vanilla();
+
+      for (Class<?> moduleClass : moduleScanner.scanModules(modulePath)) {
+        ModuleIndex moduleIndex = moduleParser.parseModule(moduleClass);
         MODULE_INDEX_REGISTRY.register(moduleIndex);
       }
     } catch (IOException cause) {
