@@ -4,12 +4,12 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.module;
+package org.amperpowered.amper.core.module;
 
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
-import org.amperpowered.amper.module.internal.AmperModule;
+import org.amperpowered.amper.core.module.internal.AmperModule;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ModuleFactory {

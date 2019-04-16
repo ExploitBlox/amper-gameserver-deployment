@@ -4,7 +4,7 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.module.internal.annotation;
+package org.amperpowered.amper.core.module.internal.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,7 +13,11 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Requires {
+public @interface Module {
 
-  String[] value();
+  String name();
+
+  String version() default "1.0.0";
+
+  String author() default "";
 }

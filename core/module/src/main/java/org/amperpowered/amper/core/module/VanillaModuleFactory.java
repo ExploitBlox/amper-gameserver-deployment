@@ -4,7 +4,7 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.module;
+package org.amperpowered.amper.core.module;
 
 import com.google.common.base.Preconditions;
 import java.io.IOException;
@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import org.amperpowered.amper.module.internal.AmperModule;
-import org.amperpowered.amper.module.internal.ModuleIndex;
-import org.amperpowered.amper.module.internal.ModuleIndexRegistry;
-import org.amperpowered.amper.module.internal.ModuleParser;
-import org.amperpowered.amper.module.internal.ModuleScanner;
+import org.amperpowered.amper.core.module.internal.AmperModule;
+import org.amperpowered.amper.core.module.internal.ModuleIndex;
+import org.amperpowered.amper.core.module.internal.ModuleIndexRegistry;
+import org.amperpowered.amper.core.module.internal.ModuleParser;
+import org.amperpowered.amper.core.module.internal.ModuleScanner;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 

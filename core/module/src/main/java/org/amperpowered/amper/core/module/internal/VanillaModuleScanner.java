@@ -4,7 +4,7 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.module.internal;
+package org.amperpowered.amper.core.module.internal;
 
 import com.google.common.base.Preconditions;
 import java.io.IOException;
@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
-import org.amperpowered.amper.module.internal.annotation.Module;
+import org.amperpowered.amper.core.module.internal.annotation.Module;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 

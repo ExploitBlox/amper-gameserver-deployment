@@ -10,9 +10,9 @@ import java.nio.file.Paths;
 import org.amperpowered.amper.core.service.ServiceFactory;
 import org.amperpowered.amper.core.service.internal.ServiceLifeCycle;
 import org.amperpowered.amper.core.stage.internal.annotation.Stage;
-import org.amperpowered.amper.module.ModuleFactory;
-import org.amperpowered.amper.module.internal.AmperModule;
-import org.amperpowered.amper.module.internal.context.InitialContext;
+import org.amperpowered.amper.core.module.ModuleFactory;
+import org.amperpowered.amper.core.module.internal.AmperModule;
+import org.amperpowered.amper.core.module.internal.context.InitialContext;
 
 public class AmperApplicationStartStage {
 
