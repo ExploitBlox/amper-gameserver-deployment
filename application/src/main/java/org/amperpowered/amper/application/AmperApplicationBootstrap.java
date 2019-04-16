@@ -9,13 +9,11 @@ package org.amperpowered.amper.application;
 import org.amperpowered.amper.core.guice.GuiceFactory;
 import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.core.bootstrap.internal.Bootstrap;
-import org.pmw.tinylog.Logger;
 
 public class AmperApplicationBootstrap implements Bootstrap {
 
   @Override
   public void initialize() {
-    Logger.info("Loading Amper application, please wait a moment...");
     GuiceFactory guiceFactory = GuiceFactory.vanilla();
     guiceFactory.createInjector(new AmperApplicationGuiceModule());
 

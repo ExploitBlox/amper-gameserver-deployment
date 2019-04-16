@@ -9,6 +9,7 @@ package org.amperpowered.amper.application;
 import org.amperpowered.core.bootstrap.BootstrapFactory;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
+import org.pmw.tinylog.Logger;
 import org.pmw.tinylog.writers.ConsoleWriter;
 import org.pmw.tinylog.writers.FileWriter;
 
@@ -22,8 +23,9 @@ public class AmperApplication {
         .formatPattern("{date: HH:mm:ss} {level}: {message}")
         .activate();
 
-    BootstrapFactory bootstrapFactory = BootstrapFactory.vanilla();
+    Logger.info("Loading Amper application, please wait a moment...");
 
+    BootstrapFactory bootstrapFactory = BootstrapFactory.vanilla();
     bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
         .ifPresent(applicationBootstrap -> {
           applicationBootstrap.initialize();
