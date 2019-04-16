@@ -18,15 +18,12 @@ import org.pmw.tinylog.Logger;
 
 final class VanillaServiceFactory implements ServiceFactory {
 
-  private static final ServiceMethodInvoker SERVICE_METHOD_INVOKER = ServiceMethodInvoker.vanilla();
-  private static final ServiceRegistry SERVICE_REGISTRY = ServiceRegistry.vanilla();
-  private static final ServiceScanner SERVICE_SCANNER = ServiceScanner.vanilla();
-
   @Override
   public void scanServices() {
     Logger.info("Scanning all services...");
 
-    SERVICE_SCANNER.scanServices();
+    ServiceScanner serviceScanner = ServiceScanner.vanilla();
+    serviceScanner.scanServices();
   }
 
   @Override
@@ -34,15 +31,18 @@ final class VanillaServiceFactory implements ServiceFactory {
     Preconditions.checkNotNull(name, "name cannot be null!");
     Preconditions.checkNotNull(serviceLifeCycle, "serviceLifeCycle cannot be null!");
 
-    Optional<ServiceModel> optionalServiceModel = SERVICE_REGISTRY.serviceModel(name);
+    ServiceRegistry serviceRegistry = ServiceRegistry.vanilla();
+    ServiceMethodInvoker serviceMethodInvoker = ServiceMethodInvoker.vanilla();
+
+    Optional<ServiceModel> optionalServiceModel = serviceRegistry.serviceModel(name);
 
     optionalServiceModel.ifPresent(serviceModel -> {
       if (serviceLifeCycle.equals(ServiceLifeCycle.ENABLING)) {
         serviceModel.enablingMethod()
-            .ifPresent(method -> SERVICE_METHOD_INVOKER.invoke(method, serviceModel.bindingClass()));
+            .ifPresent(method -> serviceMethodInvoker.invoke(method, serviceModel.bindingClass()));
       } else if (serviceLifeCycle.equals(ServiceLifeCycle.DISABLING)) {
         serviceModel.disablingMethod()
-            .ifPresent(method -> SERVICE_METHOD_INVOKER.invoke(method, serviceModel.bindingClass()));
+            .ifPresent(method -> serviceMethodInvoker.invoke(method, serviceModel.bindingClass()));
       }
     });
   }
