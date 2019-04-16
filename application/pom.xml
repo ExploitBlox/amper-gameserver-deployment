@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.amperpowered</groupId>
     <artifactId>amper</artifactId>
-    <version>2019.04.15-SNAPSHOT</version>
+    <version>2019.04.16-SNAPSHOT</version>
   </parent>
 
   <groupId>org.amperpowered.amper</groupId>
@@ -17,32 +17,32 @@
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>bootstrap</artifactId>
-      <version>2019.04.15-SNAPSHOT</version>
+      <version>2019.04.16-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>config</artifactId>
-      <version>2019.04.15-SNAPSHOT</version>
+      <version>2019.04.16-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>guice</artifactId>
-      <version>2019.04.15-SNAPSHOT</version>
+      <version>2019.04.16-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>stage</artifactId>
-      <version>2019.04.15-SNAPSHOT</version>
+      <version>2019.04.16-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>module</artifactId>
-      <version>2019.04.15-SNAPSHOT</version>
+      <version>2019.04.16-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.amperpowered.amper.core</groupId>
       <artifactId>service</artifactId>
-      <version>2019.04.15-SNAPSHOT</version>
+      <version>2019.04.16-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.tinylog</groupId>
