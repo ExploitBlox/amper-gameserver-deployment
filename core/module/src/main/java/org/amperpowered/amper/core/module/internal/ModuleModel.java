@@ -8,41 +8,41 @@ package org.amperpowered.amper.core.module.internal;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public interface ModuleIndex {
+public interface ModuleModel {
 
   @NonNull
-  static ModuleIndex begin() {
-    return new ModuleIndexBuilder();
+  static ModuleModel begin() {
+    return new ModuleModelBuilder();
   }
 
   @NonNull
   String name();
 
   @NonNull
-  ModuleIndex withName(@NonNull String name);
+  ModuleModel withName(@NonNull String name);
 
   @NonNull
   String version();
 
   @NonNull
-  ModuleIndex withVersion(@NonNull String version);
+  ModuleModel withVersion(@NonNull String version);
 
   @NonNull
   String author();
 
   @NonNull
-  ModuleIndex withAuthor(@NonNull String author);
+  ModuleModel withAuthor(@NonNull String author);
 
   @NonNull
   String[] requires();
 
   @NonNull
-  ModuleIndex withRequires(@NonNull String[] requires);
+  ModuleModel withRequires(@NonNull String[] requires);
 
   @NonNull
   AmperModule amperModule();
 
   @NonNull
-  ModuleIndex withAmperModule(@NonNull AmperModule amperModule);
+  ModuleModel withAmperModule(@NonNull AmperModule amperModule);
 
 }

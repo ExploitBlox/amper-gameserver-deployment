@@ -14,16 +14,16 @@ import java.util.List;
 import java.util.Optional;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-final class VanillaModuleIndexRegistry implements ModuleIndexRegistry {
+final class VanillaModuleModelRegistry implements ModuleModelRegistry {
 
-  static final ModuleIndexRegistry MODULE_INDEX_REGISTRY = new VanillaModuleIndexRegistry();
-  private static final List<ModuleIndex> MODULE_INDICES = new ArrayList<>();
+  static final ModuleModelRegistry MODULE_MODEL_REGISTRY = new VanillaModuleModelRegistry();
+  private static final List<ModuleModel> MODULE_INDICES = new ArrayList<>();
 
   @Override
-  public void register(@NonNull ModuleIndex moduleIndex) {
-    Preconditions.checkNotNull(moduleIndex, "moduleIndex cannot be null!");
+  public void register(@NonNull ModuleModel moduleModel) {
+    Preconditions.checkNotNull(moduleModel, "moduleModel cannot be null!");
 
-    MODULE_INDICES.add(moduleIndex);
+    MODULE_INDICES.add(moduleModel);
   }
 
   @Override
@@ -35,7 +35,7 @@ final class VanillaModuleIndexRegistry implements ModuleIndexRegistry {
 
   @NonNull
   @Override
-  public Optional<ModuleIndex> require(@NonNull String name) {
+  public Optional<ModuleModel> require(@NonNull String name) {
     Preconditions.checkNotNull(name, "name cannot be null!");
 
     return MODULE_INDICES.stream()
@@ -45,7 +45,7 @@ final class VanillaModuleIndexRegistry implements ModuleIndexRegistry {
 
   @NonNull
   @Override
-  public Collection<ModuleIndex> moduleIndices() {
+  public Collection<ModuleModel> moduleIndices() {
     return Collections.unmodifiableCollection(MODULE_INDICES);
   }
 }

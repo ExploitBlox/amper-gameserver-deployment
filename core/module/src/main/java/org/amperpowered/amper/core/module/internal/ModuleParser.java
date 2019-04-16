@@ -16,5 +16,5 @@ public interface ModuleParser {
   }
 
   @NonNull
-  ModuleIndex parseModule(@NonNull Class<?> amperModuleClass);
+  ModuleModel parseModule(@NonNull Class<?> amperModuleClass);
 }

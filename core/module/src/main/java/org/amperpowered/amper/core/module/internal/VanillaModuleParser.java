@@ -15,29 +15,29 @@ final class VanillaModuleParser implements ModuleParser {
 
   @NonNull
   @Override
-  public ModuleIndex parseModule(@NonNull Class<?> amperModuleClass) {
+  public ModuleModel parseModule(@NonNull Class<?> amperModuleClass) {
     Preconditions.checkNotNull(amperModuleClass, "amperModuleClass cannot be null!");
 
     Module module = amperModuleClass.getDeclaredAnnotation(Module.class);
 
-    ModuleIndex moduleIndex = ModuleIndex.begin()
+    ModuleModel moduleModel = ModuleModel.begin()
         .withName(module.name())
         .withVersion(module.version())
         .withAuthor(module.author());
 
     if (amperModuleClass.isAnnotationPresent(Requires.class)) {
       Requires requires = amperModuleClass.getDeclaredAnnotation(Requires.class);
-      moduleIndex.withRequires(requires.value());
+      moduleModel.withRequires(requires.value());
     }
 
     try {
       AmperModule amperModule = (AmperModule) amperModuleClass.newInstance();
-      moduleIndex.withAmperModule(amperModule);
+      moduleModel.withAmperModule(amperModule);
 
     } catch (InstantiationException | IllegalAccessException cause) {
       cause.printStackTrace();
     }
 
-    return moduleIndex;
+    return moduleModel;
   }
 }

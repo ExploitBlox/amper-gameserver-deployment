@@ -13,19 +13,20 @@ import org.pmw.tinylog.Logger;
 
 final class VanillaServiceScanner implements ServiceScanner {
 
-  private static final ServiceComposer SERVICE_COMPOSER = ServiceComposer.vanilla();
-  private static final ServiceRegistry SERVICE_REGISTRY = ServiceRegistry.vanilla();
-  private static final ClassGraph CLASS_GRAPH = new ClassGraph();
-
   @Override
   public void scanServices() {
-    try (ScanResult scanResult = CLASS_GRAPH.enableAllInfo().scan()) {
+    ClassGraph classGraph = new ClassGraph();
+
+    ServiceComposer serviceComposer = ServiceComposer.vanilla();
+    ServiceRegistry serviceRegistry = ServiceRegistry.vanilla();
+
+    try (ScanResult scanResult = classGraph.enableAllInfo().scan()) {
       scanResult.getClassesWithAnnotation(Service.class.getName())
           .loadClasses()
-          .forEach(serviceClass -> SERVICE_COMPOSER.composeService(serviceClass)
+          .forEach(serviceClass -> serviceComposer.composeService(serviceClass)
               .ifPresent(serviceModel -> {
                 Logger.info("Scanned the serviceModel '" + serviceModel.name() + "'");
-                SERVICE_REGISTRY.register(serviceModel);
+                serviceRegistry.register(serviceModel);
               }));
     }
   }

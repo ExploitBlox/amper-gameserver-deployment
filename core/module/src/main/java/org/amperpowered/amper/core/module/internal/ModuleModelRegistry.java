@@ -10,20 +10,20 @@ import java.util.Collection;
 import java.util.Optional;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public interface ModuleIndexRegistry {
+public interface ModuleModelRegistry {
 
   @NonNull
-  static ModuleIndexRegistry vanilla() {
-    return VanillaModuleIndexRegistry.MODULE_INDEX_REGISTRY;
+  static ModuleModelRegistry vanilla() {
+    return VanillaModuleModelRegistry.MODULE_MODEL_REGISTRY;
   }
 
-  void register(@NonNull ModuleIndex moduleIndex);
+  void register(@NonNull ModuleModel moduleModel);
 
   boolean contains(@NonNull String name);
 
   @NonNull
-  Optional<ModuleIndex> require(@NonNull String name);
+  Optional<ModuleModel> require(@NonNull String name);
 
   @NonNull
-  Collection<ModuleIndex> moduleIndices();
+  Collection<ModuleModel> moduleIndices();
 }

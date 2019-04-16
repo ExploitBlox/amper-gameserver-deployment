@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.amperpowered.amper.core.module.internal.AmperModule;
-import org.amperpowered.amper.core.module.internal.ModuleIndex;
-import org.amperpowered.amper.core.module.internal.ModuleIndexRegistry;
+import org.amperpowered.amper.core.module.internal.ModuleModel;
+import org.amperpowered.amper.core.module.internal.ModuleModelRegistry;
 import org.amperpowered.amper.core.module.internal.ModuleParser;
 import org.amperpowered.amper.core.module.internal.ModuleScanner;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -23,7 +23,7 @@ import org.pmw.tinylog.Logger;
 
 final class VanillaModuleFactory implements ModuleFactory {
 
-  private static final ModuleIndexRegistry MODULE_INDEX_REGISTRY = ModuleIndexRegistry.vanilla();
+  private static final ModuleModelRegistry MODULE_MODEL_REGISTRY = ModuleModelRegistry.vanilla();
 
   @Override
   public void registerModulesRecurvesly(@NonNull Path modulePath) {
@@ -36,8 +36,8 @@ final class VanillaModuleFactory implements ModuleFactory {
       ModuleParser moduleParser = ModuleParser.vanilla();
 
       for (Class<?> moduleClass : moduleScanner.scanModules(modulePath)) {
-        ModuleIndex moduleIndex = moduleParser.parseModule(moduleClass);
-        MODULE_INDEX_REGISTRY.register(moduleIndex);
+        ModuleModel moduleModel = moduleParser.parseModule(moduleClass);
+        MODULE_MODEL_REGISTRY.register(moduleModel);
       }
     } catch (IOException cause) {
       cause.printStackTrace();
@@ -46,10 +46,10 @@ final class VanillaModuleFactory implements ModuleFactory {
 
   @Override
   public boolean requireModules() {
-    return MODULE_INDEX_REGISTRY.moduleIndices()
+    return MODULE_MODEL_REGISTRY.moduleIndices()
         .stream()
         .flatMap(moduleIndex -> Arrays.stream(moduleIndex.requires()))
-        .allMatch(requiredModule -> MODULE_INDEX_REGISTRY.require(requiredModule).isPresent());
+        .allMatch(requiredModule -> MODULE_MODEL_REGISTRY.require(requiredModule).isPresent());
   }
 
   @NonNull
@@ -57,19 +57,19 @@ final class VanillaModuleFactory implements ModuleFactory {
   public Optional<AmperModule> requireModule(@NonNull String name) {
     Preconditions.checkNotNull(name, "name cannot be null!");
 
-    return MODULE_INDEX_REGISTRY.moduleIndices()
+    return MODULE_MODEL_REGISTRY.moduleIndices()
         .stream()
         .filter(moduleIndex -> moduleIndex.name().equalsIgnoreCase(name))
-        .map(ModuleIndex::amperModule)
+        .map(ModuleModel::amperModule)
         .findFirst();
   }
 
   @NonNull
   @Override
   public Collection<AmperModule> amperModules() {
-    return MODULE_INDEX_REGISTRY.moduleIndices()
+    return MODULE_MODEL_REGISTRY.moduleIndices()
         .stream()
-        .map(ModuleIndex::amperModule)
+        .map(ModuleModel::amperModule)
         .collect(Collectors.toList());
   }
 }

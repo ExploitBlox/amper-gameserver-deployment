@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-final class ModuleIndexBuilder implements ModuleIndex {
+final class ModuleModelBuilder implements ModuleModel {
 
   private String name;
   private String version;
@@ -19,7 +19,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
   private String[] requires;
   private AmperModule amperModule;
 
-  ModuleIndexBuilder() {
+  ModuleModelBuilder() {
     this.name = "undefined";
     this.version = "1.0.0";
     this.author = "undefined";
@@ -34,7 +34,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @NonNull
   @Override
-  public ModuleIndex withName(@NonNull String name) {
+  public ModuleModel withName(@NonNull String name) {
     this.name = Preconditions.checkNotNull(name, "name cannot be null!");
     return this;
   }
@@ -47,7 +47,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @NonNull
   @Override
-  public ModuleIndex withVersion(@NonNull String version) {
+  public ModuleModel withVersion(@NonNull String version) {
     this.version = Preconditions.checkNotNull(version, "version cannot be null!");
     return this;
   }
@@ -60,7 +60,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @NonNull
   @Override
-  public ModuleIndex withAuthor(@NonNull String author) {
+  public ModuleModel withAuthor(@NonNull String author) {
     this.author = author;
     return this;
   }
@@ -73,7 +73,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @NonNull
   @Override
-  public ModuleIndex withRequires(@NonNull String[] requires) {
+  public ModuleModel withRequires(@NonNull String[] requires) {
     this.requires = Preconditions.checkNotNull(requires, "requires cannot be null!");
     return this;
   }
@@ -86,7 +86,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @NonNull
   @Override
-  public ModuleIndex withAmperModule(@NonNull AmperModule amperModule) {
+  public ModuleModel withAmperModule(@NonNull AmperModule amperModule) {
     this.amperModule = Preconditions.checkNotNull(amperModule, "amperModule cannot be null!");
     return this;
   }
@@ -97,11 +97,11 @@ final class ModuleIndexBuilder implements ModuleIndex {
       return true;
     }
 
-    if (!(other instanceof ModuleIndexBuilder)) {
+    if (!(other instanceof ModuleModelBuilder)) {
       return false;
     }
 
-    ModuleIndexBuilder that = (ModuleIndexBuilder) other;
+    ModuleModelBuilder that = (ModuleModelBuilder) other;
 
     return this.name.equals(that.name) &&
         this.version.equals(that.version) &&
@@ -125,7 +125,7 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @Override
   public String toString() {
-    return "ModuleIndex{" +
+    return "ModuleModel{" +
         "name='" + this.name + '\'' +
         ", version='" + this.version + '\'' +
         ", author='" + this.author + '\'' +
