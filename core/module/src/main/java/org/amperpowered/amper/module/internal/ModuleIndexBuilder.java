@@ -6,7 +6,6 @@
  */
 package org.amperpowered.amper.module.internal;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import java.util.Arrays;
 import java.util.Objects;
@@ -113,19 +112,25 @@ final class ModuleIndexBuilder implements ModuleIndex {
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(this.name, this.version, this.author, this.amperModule);
+    int result = Objects.hash(
+        this.name,
+        this.version,
+        this.author,
+        this.amperModule);
+
     result = 31 * result + Arrays.hashCode(this.requires);
+
     return result;
   }
 
   @Override
   public String toString() {
-    return MoreObjects.toStringHelper(this)
-        .add("name", this.name)
-        .add("version", this.version)
-        .add("author", this.version)
-        .add("requires", this.requires)
-        .add("amperModule", this.amperModule)
-        .toString();
+    return "ModuleIndex{" +
+        "name='" + this.name + '\'' +
+        ", version='" + this.version + '\'' +
+        ", author='" + this.author + '\'' +
+        ", requires=" + Arrays.toString(this.requires) +
+        ", amperModule=" + this.amperModule +
+        '}';
   }
 }

@@ -9,6 +9,7 @@ package org.amperpowered.amper.core.service.internal;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
 import org.amperpowered.amper.core.service.internal.annotation.Service;
+import org.pmw.tinylog.Logger;
 
 final class VanillaServiceScanner implements ServiceScanner {
 
@@ -22,7 +23,10 @@ final class VanillaServiceScanner implements ServiceScanner {
       scanResult.getClassesWithAnnotation(Service.class.getName())
           .loadClasses()
           .forEach(serviceClass -> SERVICE_COMPOSER.composeService(serviceClass)
-              .ifPresent(SERVICE_REGISTRY::register));
+              .ifPresent(serviceModel -> {
+                Logger.info("Scanned the serviceModel '" + serviceModel.name() + "'");
+                SERVICE_REGISTRY.register(serviceModel);
+              }));
     }
   }
 }

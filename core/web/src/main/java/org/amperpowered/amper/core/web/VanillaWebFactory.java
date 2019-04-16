@@ -12,19 +12,18 @@ import org.amperpowered.amper.core.web.internal.RouteModelClassLoader;
 import org.amperpowered.amper.core.web.internal.RouteModelMethodExecutor;
 import org.amperpowered.amper.core.web.internal.RouteModelRegistry;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.pmw.tinylog.Logger;
 
 final class VanillaWebFactory implements WebFactory {
 
   static final WebFactory WEB_FACTORY = new VanillaWebFactory();
-  private static final RouteModelMethodExecutor ROUTE_MODEL_METHOD_EXECUTOR = RouteModelMethodExecutor.vanilla();
-  private static final RouteModelClassLoader ROUTE_MODEL_CLASS_LOADER = RouteModelClassLoader.vanilla();
-  private static final RouteModelRegistry ROUTE_MODEL_REGISTRY = RouteModelRegistry.vanilla();
 
   private HttpServer httpServer;
   private Router router;
 
   @Override
   public void listen(int port) {
+    Logger.info("Running web server on port: " + port);
     Vertx vertx = Vertx.vertx();
 
     this.router = Router.router(vertx);
@@ -32,7 +31,9 @@ final class VanillaWebFactory implements WebFactory {
         .requestHandler(router::accept)
         .listen(port);
 
-    ROUTE_MODEL_REGISTRY.routeModels().forEach(this::accept);
+    RouteModelRegistry routeModelRegistry = RouteModelRegistry.vanilla();
+
+    routeModelRegistry.routeModels().forEach(this::accept);
   }
 
   @Override
@@ -46,8 +47,10 @@ final class VanillaWebFactory implements WebFactory {
   public void processRouteClass(@NonNull Class<?> routeClass) {
     Preconditions.checkNotNull(routeClass, "routeClass cannot be null!");
 
-    ROUTE_MODEL_CLASS_LOADER.loadModelClass(routeClass)
-        .ifPresent(ROUTE_MODEL_REGISTRY::register);
+    RouteModelClassLoader routeModelClassLoader = RouteModelClassLoader.vanilla();
+    RouteModelRegistry routeModelRegistry = RouteModelRegistry.vanilla();
+
+    routeModelClassLoader.loadModelClass(routeClass).ifPresent(routeModelRegistry::register);
   }
 
   private void accept(@NonNull RouteModel routeModel) {
@@ -69,8 +72,7 @@ final class VanillaWebFactory implements WebFactory {
     Preconditions.checkNotNull(route, "route cannot be null!");
     Preconditions.checkNotNull(method, "method cannot be null!");
 
-    route.handler(routingContext -> ROUTE_MODEL_METHOD_EXECUTOR.execute(method, routingContext));
+    RouteModelMethodExecutor routeModelMethodExecutor = RouteModelMethodExecutor.vanilla();
+    route.handler(routingContext -> routeModelMethodExecutor.execute(method, routingContext));
   }
-
-
 }

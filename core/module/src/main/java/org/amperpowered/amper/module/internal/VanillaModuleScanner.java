@@ -20,6 +20,7 @@ import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 import org.amperpowered.amper.module.internal.annotation.Module;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.pmw.tinylog.Logger;
 
 final class VanillaModuleScanner implements ModuleScanner {
 
@@ -57,12 +58,21 @@ final class VanillaModuleScanner implements ModuleScanner {
         JarEntry entry = entries.nextElement();
 
         if (!entry.isDirectory() && entry.getName().endsWith(".class")) {
-          URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{moduleFile.toFile().toURI().toURL()});
+          URLClassLoader urlClassLoader = new URLClassLoader(
+              new URL[]{moduleFile.toFile().toURI().toURL()});
 
-          Class<?> moduleClass = urlClassLoader.loadClass(entry.getName().substring(0, entry.getName().length() - 6)
-              .replace("/", "."));
+          String entryName = entry.getName();
+
+          String className = entryName.substring(0, entryName.length() - 6)
+              .replace("/", ".");
+
+          Class<?> moduleClass = urlClassLoader.loadClass(className);
 
           if (moduleClass.isAnnotationPresent(Module.class)) {
+            Module module = moduleClass.getDeclaredAnnotation(Module.class);
+
+            Logger.info("Found the module " + module.name() + " version: " + module.version()
+                + " author: " + module.author());
             return Optional.of(moduleClass);
           }
         }

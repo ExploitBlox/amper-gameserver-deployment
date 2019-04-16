@@ -19,6 +19,7 @@ import org.amperpowered.amper.module.internal.ModuleIndexRegistry;
 import org.amperpowered.amper.module.internal.ModuleParser;
 import org.amperpowered.amper.module.internal.ModuleScanner;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.pmw.tinylog.Logger;
 
 final class VanillaModuleFactory implements ModuleFactory {
 
@@ -29,6 +30,8 @@ final class VanillaModuleFactory implements ModuleFactory {
   @Override
   public void registerModulesRecurvesly(@NonNull Path modulePath) {
     Preconditions.checkNotNull(modulePath, "modulePath cannot be null!");
+
+    Logger.info("Registering modules...");
 
     try {
       for (Class<?> amperModuleClass : MODULE_SCANNER.scanModules(modulePath)) {
