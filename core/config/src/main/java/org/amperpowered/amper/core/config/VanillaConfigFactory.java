@@ -18,15 +18,13 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 @Singleton
 final class VanillaConfigFactory implements ConfigFactory {
 
-  private static final ConfigSaver CONFIG_SAVER = ConfigSaver.vanilla();
-  private static final ConfigLoader CONFIG_LOADER = ConfigLoader.vanilla();
-
   @Override
   public <T> void save(@NonNull T requiredObject, @NonNull Path path) {
     Preconditions.checkNotNull(path, "path cannot be null!");
 
     try {
-      CONFIG_SAVER.save(requiredObject, path);
+      ConfigSaver configSaver = ConfigSaver.vanilla();
+      configSaver.save(requiredObject, path);
     } catch (IOException cause) {
       cause.printStackTrace();
     }
@@ -38,6 +36,7 @@ final class VanillaConfigFactory implements ConfigFactory {
     Preconditions.checkNotNull(path, "path cannot be null!");
     Preconditions.checkNotNull(type, "type cannot be null!");
 
-    return CONFIG_LOADER.load(path, type);
+    ConfigLoader configLoader = ConfigLoader.vanilla();
+    return configLoader.load(path, type);
   }
 }

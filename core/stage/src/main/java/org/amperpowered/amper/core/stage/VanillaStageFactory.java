@@ -13,13 +13,13 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaStageFactory implements StageFactory {
 
-  private static final StageClassLoader STAGE_CLASS_LOADER = StageClassLoader.vanilla();
-  private static final StageExecutor STAGE_EXECUTOR = StageExecutor.vanilla();
-
   @Override
   public void processingStage(@NonNull Class<?> stageClass) {
     Preconditions.checkNotNull(stageClass, "stageClass cannot be null!");
 
-    STAGE_CLASS_LOADER.loadStageClass(stageClass).forEach(STAGE_EXECUTOR::execute);
+    StageClassLoader stageClassLoader = StageClassLoader.vanilla();
+    StageExecutor stageExecutor = StageExecutor.vanilla();
+
+    stageClassLoader.loadStageClass(stageClass).forEach(stageExecutor::execute);
   }
 }
