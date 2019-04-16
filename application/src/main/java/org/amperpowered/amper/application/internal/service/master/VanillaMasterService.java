@@ -7,6 +7,7 @@
 package org.amperpowered.amper.application.internal.service.master;
 
 import org.amperpowered.amper.core.stage.StageFactory;
+import org.pmw.tinylog.Logger;
 
 public class VanillaMasterService implements MasterService {
 
@@ -15,7 +16,7 @@ public class VanillaMasterService implements MasterService {
 
   @Override
   public void enable() {
-    System.out.println("Initialized the 'master' service");
+    Logger.info("Initialized the 'master' service");
 
     STAGE_FACTORY.processingStage(MasterServiceStartStage.class);
   }

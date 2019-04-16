@@ -7,6 +7,7 @@
 package org.amperpowered.amper.application.internal.service.daemon;
 
 import org.amperpowered.amper.core.stage.StageFactory;
+import org.pmw.tinylog.Logger;
 
 public class VanillaDaemonService implements DaemonService {
 
@@ -15,7 +16,7 @@ public class VanillaDaemonService implements DaemonService {
 
   @Override
   public void enable() {
-    System.out.println("Initialized the 'daemon' service");
+    Logger.info("Initialized the 'daemon' service");
 
     STAGE_FACTORY.processingStage(DaemonServiceStartStage.class);
 
