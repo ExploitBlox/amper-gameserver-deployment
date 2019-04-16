@@ -1,4 +1,4 @@
-package org.amperpowered.amper.application.internal.config;
+package org.amperpowered.amper.application.internal.service.master.config;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 

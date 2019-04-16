@@ -4,20 +4,20 @@
  * This code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-package org.amperpowered.amper.application.internal.config;
+package org.amperpowered.amper.application.internal.service.master.config;
 
 import com.google.common.base.Preconditions;
 import java.util.Objects;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-final class IdentityBuilder implements Identity {
+final class DaemonBuilder implements Daemon {
 
   private String name;
   private String host;
   private int port;
 
-  IdentityBuilder() {
-    this.name = "application-01";
+  DaemonBuilder() {
+    this.name = "daemon-01";
     this.host = "127.0.0.1";
     this.port = 25572;
   }
@@ -30,7 +30,7 @@ final class IdentityBuilder implements Identity {
 
   @NonNull
   @Override
-  public Identity withName(@NonNull String name) {
+  public Daemon withName(@NonNull String name) {
     this.name = Preconditions.checkNotNull(name, "name cannot be null!");
     return this;
   }
@@ -43,7 +43,7 @@ final class IdentityBuilder implements Identity {
 
   @NonNull
   @Override
-  public Identity withHost(@NonNull String host) {
+  public Daemon withHost(@NonNull String host) {
     this.host = Preconditions.checkNotNull(host, "host cannot be null!");
     return this;
   }
@@ -55,7 +55,7 @@ final class IdentityBuilder implements Identity {
 
   @NonNull
   @Override
-  public Identity withPort(int port) {
+  public Daemon withPort(int port) {
     this.port = port;
     return this;
   }
@@ -66,11 +66,11 @@ final class IdentityBuilder implements Identity {
       return true;
     }
 
-    if (!(other instanceof IdentityBuilder)) {
+    if (!(other instanceof DaemonBuilder)) {
       return false;
     }
 
-    IdentityBuilder that = (IdentityBuilder) other;
+    DaemonBuilder that = (DaemonBuilder) other;
 
     return this.port == that.port &&
         this.name.equals(that.name) &&
@@ -84,7 +84,7 @@ final class IdentityBuilder implements Identity {
 
   @Override
   public String toString() {
-    return "Identity{" +
+    return "Daemon{" +
         "name='" + this.name + '\'' +
         ", host='" + this.host + '\'' +
         ", port=" + this.port +
