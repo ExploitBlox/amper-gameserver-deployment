@@ -8,14 +8,12 @@ package org.amperpowered.core.bootstrap.internal;
 
 import com.google.common.base.Preconditions;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 
 final class VanillaBootstrapClassScanner implements BootstrapClassScanner {
 
-  @NonNull
   @Override
-  public <T extends Bootstrap> Optional<T> scanBootstrapClass(@NonNull Class<T> bootstrapClass) {
+  public <T extends Bootstrap> Optional<T> scanBootstrapClass(Class<T> bootstrapClass) {
     Preconditions.checkNotNull(bootstrapClass, "bootstrapClass cannot be null!");
 
     Logger.info("Scanned the bootstrap class '" + bootstrapClass.getName() + "'");

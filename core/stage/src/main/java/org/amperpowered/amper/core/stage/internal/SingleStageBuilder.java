@@ -9,7 +9,6 @@ package org.amperpowered.amper.core.stage.internal;
 import com.google.common.base.Preconditions;
 import java.lang.reflect.Method;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class SingleStageBuilder implements SingleStage {
 
@@ -21,15 +20,13 @@ final class SingleStageBuilder implements SingleStage {
     this.priority = 0;
   }
 
-  @NonNull
   @Override
   public Method method() {
     return this.method;
   }
 
-  @NonNull
   @Override
-  public SingleStage withMethod(@NonNull Method method) {
+  public SingleStage withMethod(Method method) {
     this.method = Preconditions.checkNotNull(method, "method cannot be null!");
     return this;
   }
@@ -39,7 +36,6 @@ final class SingleStageBuilder implements SingleStage {
     return this.priority;
   }
 
-  @NonNull
   @Override
   public SingleStage withPriority(int priority) {
     this.priority = priority;
@@ -47,7 +43,7 @@ final class SingleStageBuilder implements SingleStage {
   }
 
   @Override
-  public int compareTo(@NonNull SingleStage other) {
+  public int compareTo(SingleStage other) {
     Preconditions.checkNotNull(other, "singleStage cannot be null!");
 
     return this.priority - other.priority();

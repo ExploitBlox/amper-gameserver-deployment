@@ -2,7 +2,6 @@ package org.amperpowered.amper.application.internal.service.master.config;
 
 import com.google.common.base.Preconditions;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class WebConfigBuilder implements WebConfig {
 
@@ -14,15 +13,15 @@ final class WebConfigBuilder implements WebConfig {
     this.port = 8080;
   }
 
-  @NonNull
+
   @Override
   public String authenticateKey() {
     return this.authenticateKey;
   }
 
-  @NonNull
+
   @Override
-  public WebConfig withAuthenticateKey(@NonNull String authenticateKey) {
+  public WebConfig withAuthenticateKey(String authenticateKey) {
     this.authenticateKey = Preconditions.checkNotNull(authenticateKey, "authenticateKey cannot be null!");
     return this;
   }
@@ -32,7 +31,7 @@ final class WebConfigBuilder implements WebConfig {
     return this.port;
   }
 
-  @NonNull
+
   @Override
   public WebConfig withPort(int port) {
     this.port = port;

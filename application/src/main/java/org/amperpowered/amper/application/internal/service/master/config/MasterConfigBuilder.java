@@ -10,7 +10,6 @@ import com.google.common.base.Preconditions;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class MasterConfigBuilder implements MasterConfig {
 
@@ -24,41 +23,41 @@ final class MasterConfigBuilder implements MasterConfig {
     this.daemons = Collections.emptyList();
   }
 
-  @NonNull
+
   @Override
   public String service() {
     return this.service;
   }
 
-  @NonNull
+
   @Override
-  public MasterConfig withService(@NonNull String service) {
+  public MasterConfig withService(String service) {
     this.service = Preconditions.checkNotNull(service, "service cannot be null!");
     return this;
   }
 
-  @NonNull
+
   @Override
   public WebConfig webConfig() {
     return this.webConfig;
   }
 
-  @NonNull
+
   @Override
-  public MasterConfig withWebConfig(@NonNull WebConfig webConfig) {
+  public MasterConfig withWebConfig(WebConfig webConfig) {
     this.webConfig = Preconditions.checkNotNull(webConfig, "webConfig cannot be null!");
     return this;
   }
 
-  @NonNull
+
   @Override
   public List<Daemon> daemons() {
     return this.daemons;
   }
 
-  @NonNull
+
   @Override
-  public MasterConfig withDaemons(@NonNull List<Daemon> daemons) {
+  public MasterConfig withDaemons(List<Daemon> daemons) {
     this.daemons = Preconditions.checkNotNull(daemons, "daemons cannot be null!");
     return this;
   }

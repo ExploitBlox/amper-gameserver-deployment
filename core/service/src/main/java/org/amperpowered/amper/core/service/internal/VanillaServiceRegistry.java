@@ -10,7 +10,6 @@ import com.google.common.base.Preconditions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaServiceRegistry implements ServiceRegistry {
 
@@ -18,15 +17,14 @@ final class VanillaServiceRegistry implements ServiceRegistry {
   private static final List<ServiceModel> SERVICE_MODELS = new ArrayList<>();
 
   @Override
-  public void register(@NonNull ServiceModel serviceModel) {
+  public void register(ServiceModel serviceModel) {
     Preconditions.checkNotNull(serviceModel, "serviceModel cannot be null!");
 
     SERVICE_MODELS.add(serviceModel);
   }
 
-  @NonNull
   @Override
-  public Optional<ServiceModel> serviceModel(@NonNull String name) {
+  public Optional<ServiceModel> serviceModel(String name) {
     return SERVICE_MODELS.stream()
         .filter(serviceModel -> serviceModel.name().equalsIgnoreCase(name))
         .findFirst();

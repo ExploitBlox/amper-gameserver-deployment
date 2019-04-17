@@ -13,13 +13,12 @@ import java.nio.file.Path;
 import java.util.Optional;
 import org.amperpowered.amper.core.config.internal.ConfigLoader;
 import org.amperpowered.amper.core.config.internal.ConfigSaver;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 @Singleton
 final class VanillaConfigFactory implements ConfigFactory {
 
   @Override
-  public <T> void save(@NonNull T requiredObject, @NonNull Path path) {
+  public <T> void save(T requiredObject, Path path) {
     Preconditions.checkNotNull(path, "path cannot be null!");
 
     try {
@@ -30,9 +29,8 @@ final class VanillaConfigFactory implements ConfigFactory {
     }
   }
 
-  @NonNull
   @Override
-  public <T> Optional<T> load(@NonNull Path path, @NonNull T type) {
+  public <T> Optional<T> load(Path path, T type) {
     Preconditions.checkNotNull(path, "path cannot be null!");
     Preconditions.checkNotNull(type, "type cannot be null!");
 

@@ -9,13 +9,11 @@ package org.amperpowered.amper.core.module.internal;
 import com.google.common.base.Preconditions;
 import org.amperpowered.amper.core.module.internal.annotation.Module;
 import org.amperpowered.amper.core.module.internal.annotation.Requires;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaModuleParser implements ModuleParser {
 
-  @NonNull
   @Override
-  public ModuleModel parseModule(@NonNull Class<?> amperModuleClass) {
+  public ModuleModel parseModule(Class<?> amperModuleClass) {
     Preconditions.checkNotNull(amperModuleClass, "amperModuleClass cannot be null!");
 
     Module module = amperModuleClass.getDeclaredAnnotation(Module.class);

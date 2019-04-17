@@ -8,22 +8,18 @@ package org.amperpowered.amper.core.module.internal;
 
 import java.util.Collection;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ModuleModelRegistry {
 
-  @NonNull
   static ModuleModelRegistry vanilla() {
     return VanillaModuleModelRegistry.MODULE_MODEL_REGISTRY;
   }
 
-  void register(@NonNull ModuleModel moduleModel);
+  void register(ModuleModel moduleModel);
 
-  boolean contains(@NonNull String name);
+  boolean contains(String name);
 
-  @NonNull
-  Optional<ModuleModel> require(@NonNull String name);
+  Optional<ModuleModel> require(String name);
 
-  @NonNull
   Collection<ModuleModel> moduleIndices();
 }

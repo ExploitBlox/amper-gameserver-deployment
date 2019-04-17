@@ -6,11 +6,8 @@
  */
 package org.amperpowered.amper.core.service.internal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface ServiceScanner {
 
-  @NonNull
   static ServiceScanner vanilla() {
     return new VanillaServiceScanner();
   }

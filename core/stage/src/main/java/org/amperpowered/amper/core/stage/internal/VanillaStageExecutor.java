@@ -10,12 +10,11 @@ import com.google.common.base.Preconditions;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.amperpowered.amper.core.stage.internal.exception.StageExecuteException;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaStageExecutor implements StageExecutor {
 
   @Override
-  public void execute(@NonNull SingleStage singleStage) {
+  public void execute(SingleStage singleStage) {
     Preconditions.checkNotNull(singleStage, "singleStage cannot be null!");
 
     try {

@@ -1,30 +1,22 @@
 package org.amperpowered.amper.core.web.internal;
 
 import java.lang.reflect.Method;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface RouteModel {
 
-  @NonNull
   static RouteModel begin() {
     return new RouteModelBuilder();
   }
 
-  @NonNull
   String name();
 
-  @NonNull
-  RouteModel withName(@NonNull String name);
+  RouteModel withName(String name);
 
-  @NonNull
   RouteMapping routeMapping();
 
-  @NonNull
-  RouteModel withRouteMapping(@NonNull RouteMapping routeMapping);
+  RouteModel withRouteMapping(RouteMapping routeMapping);
 
-  @NonNull
   Method routeMethod();
 
-  @NonNull
-  RouteModel withRouteMethod(@NonNull Method routeMethod);
+  RouteModel withRouteMethod(Method routeMethod);
 }

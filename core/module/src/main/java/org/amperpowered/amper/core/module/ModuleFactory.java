@@ -10,22 +10,18 @@ import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
 import org.amperpowered.amper.core.module.internal.AmperModule;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ModuleFactory {
 
-  @NonNull
   static ModuleFactory vanilla() {
     return new VanillaModuleFactory();
   }
 
-  void registerModulesRecurvesly(@NonNull Path modulePath);
+  void registerModulesRecurvesly(Path modulePath);
 
   boolean requireModules();
 
-  @NonNull
-  Optional<AmperModule> requireModule(@NonNull String name);
+  Optional<AmperModule> requireModule(String name);
 
-  @NonNull
   Collection<AmperModule> amperModules();
 }

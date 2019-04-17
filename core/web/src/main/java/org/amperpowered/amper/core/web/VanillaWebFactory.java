@@ -11,7 +11,6 @@ import org.amperpowered.amper.core.web.internal.RouteModel;
 import org.amperpowered.amper.core.web.internal.RouteModelClassLoader;
 import org.amperpowered.amper.core.web.internal.RouteModelMethodExecutor;
 import org.amperpowered.amper.core.web.internal.RouteModelRegistry;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 
 final class VanillaWebFactory implements WebFactory {
@@ -44,7 +43,7 @@ final class VanillaWebFactory implements WebFactory {
   }
 
   @Override
-  public void processRouteClass(@NonNull Class<?> routeClass) {
+  public void processRouteClass(Class<?> routeClass) {
     Preconditions.checkNotNull(routeClass, "routeClass cannot be null!");
 
     RouteModelClassLoader routeModelClassLoader = RouteModelClassLoader.vanilla();
@@ -53,7 +52,7 @@ final class VanillaWebFactory implements WebFactory {
     routeModelClassLoader.loadModelClass(routeClass).ifPresent(routeModelRegistry::register);
   }
 
-  private void accept(@NonNull RouteModel routeModel) {
+  private void accept(RouteModel routeModel) {
     Preconditions.checkNotNull(routeModel, "routeModel cannot be null!");
     Preconditions.checkNotNull(router, "router cannot be null!");
 
@@ -68,7 +67,7 @@ final class VanillaWebFactory implements WebFactory {
     }
   }
 
-  private void handleRoute(@NonNull Route route, @NonNull Method method) {
+  private void handleRoute(Route route, Method method) {
     Preconditions.checkNotNull(route, "route cannot be null!");
     Preconditions.checkNotNull(method, "method cannot be null!");
 

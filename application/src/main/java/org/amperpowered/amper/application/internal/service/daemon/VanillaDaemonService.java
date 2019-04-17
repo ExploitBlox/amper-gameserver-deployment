@@ -19,7 +19,6 @@ public class VanillaDaemonService implements DaemonService {
     Logger.info("Initialized the 'daemon' service");
 
     STAGE_FACTORY.processingStage(DaemonServiceStartStage.class);
-
   }
 
   @Override

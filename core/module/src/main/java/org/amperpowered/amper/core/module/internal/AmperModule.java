@@ -8,11 +8,10 @@ package org.amperpowered.amper.core.module.internal;
 
 import org.amperpowered.amper.core.module.internal.context.InitialContext;
 import org.amperpowered.amper.core.module.internal.context.TerminateContext;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface AmperModule {
 
-  void initial(@NonNull InitialContext initialContext);
+  void initial(InitialContext initialContext);
 
-  void terminate(@NonNull TerminateContext terminateContext);
+  void terminate(TerminateContext terminateContext);
 }

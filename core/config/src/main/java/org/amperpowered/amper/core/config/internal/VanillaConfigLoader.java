@@ -14,7 +14,6 @@ import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaConfigLoader implements ConfigLoader {
 
@@ -24,9 +23,8 @@ final class VanillaConfigLoader implements ConfigLoader {
       .serializeNulls()
       .create();
 
-  @NonNull
   @Override
-  public <T> Optional<T> load(@NonNull Path path, @NonNull T type) {
+  public <T> Optional<T> load(Path path, T type) {
     Preconditions.checkNotNull(path, "path cannot be null!");
     Preconditions.checkNotNull(type, "type cannot be null!");
 

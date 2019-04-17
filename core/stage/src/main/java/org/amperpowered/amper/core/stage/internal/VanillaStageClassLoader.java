@@ -14,13 +14,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.amperpowered.amper.core.stage.internal.annotation.Stage;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaStageClassLoader implements StageClassLoader {
 
-  @NonNull
   @Override
-  public List<SingleStage> loadStageClass(@NonNull Class<?> stageClass) {
+  public List<SingleStage> loadStageClass(Class<?> stageClass) {
     Preconditions.checkNotNull(stageClass, "stageClass cannot be null!");
 
     List<SingleStage> stages = new ArrayList<>();
@@ -38,8 +36,7 @@ final class VanillaStageClassLoader implements StageClassLoader {
     return stages;
   }
 
-  @NonNull
-  private List<Method> collectStageMethods(@NonNull Class<?> stageClass) {
+  private List<Method> collectStageMethods(Class<?> stageClass) {
     Preconditions.checkNotNull(stageClass, "stageClass cannot be null!");
 
     return Arrays.stream(stageClass.getDeclaredMethods())

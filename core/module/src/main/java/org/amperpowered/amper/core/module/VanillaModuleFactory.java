@@ -18,7 +18,6 @@ import org.amperpowered.amper.core.module.internal.ModuleModel;
 import org.amperpowered.amper.core.module.internal.ModuleModelRegistry;
 import org.amperpowered.amper.core.module.internal.ModuleParser;
 import org.amperpowered.amper.core.module.internal.ModuleScanner;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 
 final class VanillaModuleFactory implements ModuleFactory {
@@ -26,7 +25,7 @@ final class VanillaModuleFactory implements ModuleFactory {
   private static final ModuleModelRegistry MODULE_MODEL_REGISTRY = ModuleModelRegistry.vanilla();
 
   @Override
-  public void registerModulesRecurvesly(@NonNull Path modulePath) {
+  public void registerModulesRecurvesly(Path modulePath) {
     Preconditions.checkNotNull(modulePath, "modulePath cannot be null!");
 
     Logger.info("Registering modules...");
@@ -52,9 +51,9 @@ final class VanillaModuleFactory implements ModuleFactory {
         .allMatch(requiredModule -> MODULE_MODEL_REGISTRY.require(requiredModule).isPresent());
   }
 
-  @NonNull
+
   @Override
-  public Optional<AmperModule> requireModule(@NonNull String name) {
+  public Optional<AmperModule> requireModule(String name) {
     Preconditions.checkNotNull(name, "name cannot be null!");
 
     return MODULE_MODEL_REGISTRY.moduleIndices()
@@ -64,7 +63,6 @@ final class VanillaModuleFactory implements ModuleFactory {
         .findFirst();
   }
 
-  @NonNull
   @Override
   public Collection<AmperModule> amperModules() {
     return MODULE_MODEL_REGISTRY.moduleIndices()

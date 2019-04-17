@@ -9,12 +9,11 @@ package org.amperpowered.amper.core.stage;
 import com.google.common.base.Preconditions;
 import org.amperpowered.amper.core.stage.internal.StageClassLoader;
 import org.amperpowered.amper.core.stage.internal.StageExecutor;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaStageFactory implements StageFactory {
 
   @Override
-  public void processingStage(@NonNull Class<?> stageClass) {
+  public void processingStage(Class<?> stageClass) {
     Preconditions.checkNotNull(stageClass, "stageClass cannot be null!");
 
     StageClassLoader stageClassLoader = StageClassLoader.vanilla();

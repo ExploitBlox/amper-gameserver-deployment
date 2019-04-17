@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaModuleModelRegistry implements ModuleModelRegistry {
 
@@ -20,22 +19,22 @@ final class VanillaModuleModelRegistry implements ModuleModelRegistry {
   private static final List<ModuleModel> MODULE_INDICES = new ArrayList<>();
 
   @Override
-  public void register(@NonNull ModuleModel moduleModel) {
+  public void register(ModuleModel moduleModel) {
     Preconditions.checkNotNull(moduleModel, "moduleModel cannot be null!");
 
     MODULE_INDICES.add(moduleModel);
   }
 
   @Override
-  public boolean contains(@NonNull String name) {
+  public boolean contains(String name) {
     Preconditions.checkNotNull(name, "name cannot be null!");
 
     return this.require(name).isPresent();
   }
 
-  @NonNull
+
   @Override
-  public Optional<ModuleModel> require(@NonNull String name) {
+  public Optional<ModuleModel> require(String name) {
     Preconditions.checkNotNull(name, "name cannot be null!");
 
     return MODULE_INDICES.stream()
@@ -43,7 +42,6 @@ final class VanillaModuleModelRegistry implements ModuleModelRegistry {
         .findFirst();
   }
 
-  @NonNull
   @Override
   public Collection<ModuleModel> moduleIndices() {
     return Collections.unmodifiableCollection(MODULE_INDICES);

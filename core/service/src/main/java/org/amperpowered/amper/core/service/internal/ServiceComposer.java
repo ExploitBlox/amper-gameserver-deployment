@@ -7,15 +7,12 @@
 package org.amperpowered.amper.core.service.internal;
 
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ServiceComposer {
 
-  @NonNull
   static ServiceComposer vanilla() {
     return new VanillaServiceComposer();
   }
 
-  @NonNull
-  Optional<ServiceModel> composeService(@NonNull Class<?> serviceClass);
+  Optional<ServiceModel> composeService(Class<?> serviceClass);
 }

@@ -19,14 +19,12 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 import org.amperpowered.amper.core.module.internal.annotation.Module;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 
 final class VanillaModuleScanner implements ModuleScanner {
 
-  @NonNull
   @Override
-  public List<Class<?>> scanModules(@NonNull Path modulePath) throws IOException {
+  public List<Class<?>> scanModules(Path modulePath) throws IOException {
     Preconditions.checkNotNull(modulePath, "modulePath cannot be null!");
 
     if (!Files.exists(modulePath)) {
@@ -41,9 +39,8 @@ final class VanillaModuleScanner implements ModuleScanner {
         .collect(Collectors.toList());
   }
 
-  @NonNull
   @Override
-  public Optional<Class<?>> scanModule(@NonNull Path moduleFile) {
+  public Optional<Class<?>> scanModule(Path moduleFile) {
     Preconditions.checkNotNull(moduleFile, "moduleFile cannot be null!");
 
     if (!Files.exists(moduleFile)) {

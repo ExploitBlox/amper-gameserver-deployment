@@ -7,31 +7,30 @@
 package org.amperpowered.amper.application.internal.service.master.config;
 
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface MasterConfig {
 
-  @NonNull
+
   static MasterConfig begin() {
     return new MasterConfigBuilder();
   }
 
-  @NonNull
+
   String service();
 
-  @NonNull
-  MasterConfig withService(@NonNull String service);
 
-  @NonNull
+  MasterConfig withService(String service);
+
+
   WebConfig webConfig();
 
-  @NonNull
-  MasterConfig withWebConfig(@NonNull WebConfig webConfig);
 
-  @NonNull
+  MasterConfig withWebConfig(WebConfig webConfig);
+
+
   List<Daemon> daemons();
 
-  @NonNull
-  MasterConfig withDaemons(@NonNull List<Daemon> daemons);
+
+  MasterConfig withDaemons(List<Daemon> daemons);
 
 }

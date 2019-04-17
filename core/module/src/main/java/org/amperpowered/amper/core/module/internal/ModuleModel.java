@@ -6,43 +6,30 @@
  */
 package org.amperpowered.amper.core.module.internal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface ModuleModel {
 
-  @NonNull
   static ModuleModel begin() {
     return new ModuleModelBuilder();
   }
 
-  @NonNull
   String name();
 
-  @NonNull
-  ModuleModel withName(@NonNull String name);
+  ModuleModel withName(String name);
 
-  @NonNull
   String version();
 
-  @NonNull
-  ModuleModel withVersion(@NonNull String version);
+  ModuleModel withVersion(String version);
 
-  @NonNull
   String author();
 
-  @NonNull
-  ModuleModel withAuthor(@NonNull String author);
+  ModuleModel withAuthor(String author);
 
-  @NonNull
   String[] requires();
 
-  @NonNull
-  ModuleModel withRequires(@NonNull String[] requires);
+  ModuleModel withRequires(String[] requires);
 
-  @NonNull
   AmperModule amperModule();
 
-  @NonNull
-  ModuleModel withAmperModule(@NonNull AmperModule amperModule);
+  ModuleModel withAmperModule(AmperModule amperModule);
 
 }

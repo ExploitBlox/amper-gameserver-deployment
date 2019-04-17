@@ -6,11 +6,9 @@
  */
 package org.amperpowered.amper.core.stage.internal.exception;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public class StageExecuteException extends RuntimeException {
 
-  public StageExecuteException(@NonNull String message) {
+  public StageExecuteException(String message) {
     super(message);
   }
 }

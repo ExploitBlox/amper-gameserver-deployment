@@ -5,13 +5,11 @@ import java.lang.reflect.Method;
 import java.util.Optional;
 import org.amperpowered.amper.core.web.internal.annotation.Route;
 import org.amperpowered.amper.core.web.internal.annotation.RouteHandler;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaRouteModelClassLoader implements RouteModelClassLoader {
 
-  @NonNull
   @Override
-  public Optional<RouteModel> loadModelClass(@NonNull Class<?> routeModelClass) {
+  public Optional<RouteModel> loadModelClass(Class<?> routeModelClass) {
     Preconditions.checkNotNull(routeModelClass, "routeModelClass cannot be null!");
 
     if (!routeModelClass.isAnnotationPresent(Route.class)) {

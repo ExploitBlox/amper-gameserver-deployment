@@ -6,13 +6,11 @@
  */
 package org.amperpowered.amper.core.stage;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface StageFactory {
 
   static StageFactory vanilla() {
     return new VanillaStageFactory();
   }
 
-  void processingStage(@NonNull Class<?> stageClass);
+  void processingStage(Class<?> stageClass);
 }

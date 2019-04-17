@@ -7,7 +7,6 @@
 package org.amperpowered.core.bootstrap.internal;
 
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface BootstrapClassScanner {
 
@@ -15,5 +14,5 @@ public interface BootstrapClassScanner {
     return new VanillaBootstrapClassScanner();
   }
 
-  @NonNull <T extends Bootstrap> Optional<T> scanBootstrapClass(@NonNull Class<T> bootstrapClass);
+  <T extends Bootstrap> Optional<T> scanBootstrapClass(Class<T> bootstrapClass);
 }

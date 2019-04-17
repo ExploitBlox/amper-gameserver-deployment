@@ -13,7 +13,6 @@ import org.amperpowered.amper.core.service.internal.ServiceMethodInvoker;
 import org.amperpowered.amper.core.service.internal.ServiceModel;
 import org.amperpowered.amper.core.service.internal.ServiceRegistry;
 import org.amperpowered.amper.core.service.internal.ServiceScanner;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.pmw.tinylog.Logger;
 
 final class VanillaServiceFactory implements ServiceFactory {
@@ -27,7 +26,7 @@ final class VanillaServiceFactory implements ServiceFactory {
   }
 
   @Override
-  public void invokeService(@NonNull String name, @NonNull ServiceLifeCycle serviceLifeCycle) {
+  public void invokeService(String name, ServiceLifeCycle serviceLifeCycle) {
     Preconditions.checkNotNull(name, "name cannot be null!");
     Preconditions.checkNotNull(serviceLifeCycle, "serviceLifeCycle cannot be null!");
 

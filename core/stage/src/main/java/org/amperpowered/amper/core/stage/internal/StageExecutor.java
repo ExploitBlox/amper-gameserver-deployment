@@ -6,8 +6,6 @@
  */
 package org.amperpowered.amper.core.stage.internal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 @FunctionalInterface
 public interface StageExecutor {
 
@@ -15,5 +13,5 @@ public interface StageExecutor {
     return new VanillaStageExecutor();
   }
 
-  void execute(@NonNull SingleStage singleStage);
+  void execute(SingleStage singleStage);
 }

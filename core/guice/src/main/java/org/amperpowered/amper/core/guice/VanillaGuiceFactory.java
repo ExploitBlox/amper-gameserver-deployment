@@ -14,7 +14,6 @@ import com.google.inject.Injector;
 import com.google.inject.Provider;
 import java.util.Optional;
 import org.amperpowered.amper.core.guice.internal.GuiceInjectController;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaGuiceFactory implements GuiceFactory {
 
@@ -24,33 +23,30 @@ final class VanillaGuiceFactory implements GuiceFactory {
   private Injector injector;
 
   @Override
-  public void createInjector(@NonNull AbstractModule abstractModule) {
+  public void createInjector(AbstractModule abstractModule) {
     Preconditions.checkNotNull(abstractModule, "abstractModule cannot be null!");
 
     this.injector = Guice.createInjector(abstractModule);
   }
 
-  @NonNull
   @Override
-  public <T> Optional<Binding<T>> getBinding(@NonNull Class<T> bindingClass) {
+  public <T> Optional<Binding<T>> getBinding(Class<T> bindingClass) {
     Preconditions.checkNotNull(bindingClass, "bindingClass cannot be null!");
     Preconditions.checkNotNull(this.injector, "injector cannot be null!");
 
     return GUICE_INJECT_CONTROLLER.getBinding(this.injector, bindingClass);
   }
 
-  @NonNull
   @Override
-  public <T> Optional<Provider<T>> getProvider(@NonNull Class<T> providerClass) {
+  public <T> Optional<Provider<T>> getProvider(Class<T> providerClass) {
     Preconditions.checkNotNull(providerClass, "providerClass cannot be null!");
     Preconditions.checkNotNull(this.injector, "injector cannot be null!");
 
     return GUICE_INJECT_CONTROLLER.getProvider(this.injector, providerClass);
   }
 
-  @NonNull
   @Override
-  public <T> Optional<T> getInstance(@NonNull Class<T> instanceClass) {
+  public <T> Optional<T> getInstance(Class<T> instanceClass) {
     Preconditions.checkNotNull(instanceClass, "instanceClass cannot be null!");
     Preconditions.checkNotNull(this.injector, "injector cannot be null!");
 

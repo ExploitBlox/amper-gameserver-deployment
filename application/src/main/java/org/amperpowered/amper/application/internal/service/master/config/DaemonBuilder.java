@@ -8,7 +8,6 @@ package org.amperpowered.amper.application.internal.service.master.config;
 
 import com.google.common.base.Preconditions;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class DaemonBuilder implements Daemon {
 
@@ -22,28 +21,28 @@ final class DaemonBuilder implements Daemon {
     this.port = 25572;
   }
 
-  @NonNull
+
   @Override
   public String name() {
     return this.name;
   }
 
-  @NonNull
+
   @Override
-  public Daemon withName(@NonNull String name) {
+  public Daemon withName(String name) {
     this.name = Preconditions.checkNotNull(name, "name cannot be null!");
     return this;
   }
 
-  @NonNull
+
   @Override
   public String host() {
     return this.host;
   }
 
-  @NonNull
+
   @Override
-  public Daemon withHost(@NonNull String host) {
+  public Daemon withHost(String host) {
     this.host = Preconditions.checkNotNull(host, "host cannot be null!");
     return this;
   }
@@ -53,7 +52,7 @@ final class DaemonBuilder implements Daemon {
     return this.port;
   }
 
-  @NonNull
+
   @Override
   public Daemon withPort(int port) {
     this.port = port;

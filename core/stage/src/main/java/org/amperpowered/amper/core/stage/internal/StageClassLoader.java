@@ -7,15 +7,12 @@
 package org.amperpowered.amper.core.stage.internal;
 
 import java.util.List;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface StageClassLoader {
 
-  @NonNull
   static StageClassLoader vanilla() {
     return new VanillaStageClassLoader();
   }
 
-  @NonNull
-  List<SingleStage> loadStageClass(@NonNull Class<?> stageClass);
+  List<SingleStage> loadStageClass(Class<?> stageClass);
 }

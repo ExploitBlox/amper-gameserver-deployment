@@ -13,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaConfigSaver implements ConfigSaver {
 
@@ -24,7 +23,7 @@ final class VanillaConfigSaver implements ConfigSaver {
       .create();
 
   @Override
-  public <T> void save(@NonNull T requiredObject, @NonNull Path path) throws IOException {
+  public <T> void save(T requiredObject, Path path) throws IOException {
     Preconditions.checkNotNull(requiredObject, "requiredObject cannot be null!");
     Preconditions.checkNotNull(path, "path cannot be null!");
 

@@ -13,13 +13,11 @@ import java.util.Optional;
 import org.amperpowered.amper.core.service.internal.annotation.BindWith;
 import org.amperpowered.amper.core.service.internal.annotation.Runnable;
 import org.amperpowered.amper.core.service.internal.annotation.Service;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaServiceComposer implements ServiceComposer {
 
-  @NonNull
   @Override
-  public Optional<ServiceModel> composeService(@NonNull Class<?> serviceClass) {
+  public Optional<ServiceModel> composeService(Class<?> serviceClass) {
     Preconditions.checkNotNull(serviceClass, "serviceClass cannot be null!");
 
     if (!serviceClass.isAnnotationPresent(Service.class) && !serviceClass.isAnnotationPresent(BindWith.class)) {
@@ -38,7 +36,7 @@ final class VanillaServiceComposer implements ServiceComposer {
     return Optional.of(serviceModel);
   }
 
-  private void composeMethods(@NonNull ServiceModel serviceModel, @NonNull Method[] methods) {
+  private void composeMethods(ServiceModel serviceModel, Method[] methods) {
     Preconditions.checkNotNull(serviceModel, "serviceModel cannot be null!");
     Preconditions.checkNotNull(methods, "methods cannot be null!");
 

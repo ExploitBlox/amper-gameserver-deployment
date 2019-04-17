@@ -10,7 +10,6 @@ import com.google.common.base.Preconditions;
 import java.lang.reflect.Method;
 import java.util.Objects;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class ServiceModelBuilder implements ServiceModel {
 
@@ -26,54 +25,46 @@ final class ServiceModelBuilder implements ServiceModel {
     this.disablingMethod = null;
   }
 
-  @NonNull
   @Override
   public String name() {
     return this.name;
   }
 
-  @NonNull
   @Override
-  public ServiceModel withName(@NonNull String name) {
+  public ServiceModel withName(String name) {
     this.name = Preconditions.checkNotNull(name, "name cannot be null!");
     return this;
   }
 
-  @NonNull
   @Override
   public Class<?> bindingClass() {
     return this.bindingClass;
   }
 
-  @NonNull
   @Override
-  public ServiceModel withBindingClass(@NonNull Class<?> bindingClass) {
+  public ServiceModel withBindingClass(Class<?> bindingClass) {
     this.bindingClass = Preconditions.checkNotNull(bindingClass, "bindingClass cannot be null!");
     return this;
   }
 
-  @NonNull
   @Override
   public Optional<Method> enablingMethod() {
     return Optional.ofNullable(this.enablingMethod);
   }
 
-  @NonNull
   @Override
-  public ServiceModel withEnablingMethod(@NonNull Method enablingMethod) {
+  public ServiceModel withEnablingMethod(Method enablingMethod) {
     this.enablingMethod = Preconditions.checkNotNull(enablingMethod, "enablingMethod cannot be null!");
     return this;
   }
 
-  @NonNull
   @Override
   public Optional<Method> disablingMethod() {
     return Optional.ofNullable(this.disablingMethod);
   }
 
-  @NonNull
   @Override
-  public ServiceModel withDisablingMethod(@NonNull Method disablingMethod) {
+  public ServiceModel withDisablingMethod(Method disablingMethod) {
     this.disablingMethod = Preconditions.checkNotNull(disablingMethod, "disablingMethod cannot be null!");
     return this;
   }

@@ -5,12 +5,11 @@ import io.vertx.ext.web.RoutingContext;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.amperpowered.amper.core.web.internal.exception.RouteModelMethodExecuteException;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class VanillaRouteModelMethodExecutor implements RouteModelMethodExecutor {
 
   @Override
-  public void execute(@NonNull Method method, @NonNull RoutingContext routingContext) {
+  public void execute(Method method, RoutingContext routingContext) {
     Preconditions.checkNotNull(method, "method cannot be null!");
     Preconditions.checkNotNull(routingContext, "routingContext cannot be null!");
 

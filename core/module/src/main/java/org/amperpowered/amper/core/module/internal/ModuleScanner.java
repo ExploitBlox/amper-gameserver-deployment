@@ -10,18 +10,14 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ModuleScanner {
 
-  @NonNull
   static ModuleScanner vanilla() {
     return new VanillaModuleScanner();
   }
 
-  @NonNull
-  List<Class<?>> scanModules(@NonNull Path modulePath) throws IOException;
+  List<Class<?>> scanModules(Path modulePath) throws IOException;
 
-  @NonNull
   Optional<Class<?>> scanModule(Path moduleFile);
 }

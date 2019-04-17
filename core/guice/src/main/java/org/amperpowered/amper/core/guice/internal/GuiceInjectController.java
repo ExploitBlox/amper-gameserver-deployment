@@ -10,18 +10,16 @@ import com.google.inject.Binding;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface GuiceInjectController {
 
-  @NonNull
   static GuiceInjectController vanilla() {
     return new VanillaGuiceInjectController();
   }
 
-  @NonNull <T> Optional<Binding<T>> getBinding(@NonNull Injector injector, @NonNull Class<T> bindingClass);
+  <T> Optional<Binding<T>> getBinding(Injector injector, Class<T> bindingClass);
 
-  @NonNull <T> Optional<Provider<T>> getProvider(@NonNull Injector injector, @NonNull Class<T> providerClass);
+  <T> Optional<Provider<T>> getProvider(Injector injector, Class<T> providerClass);
 
-  @NonNull <T> Optional<T> getInstance(@NonNull Injector injector, @NonNull Class<T> instanceClass);
+  <T> Optional<T> getInstance(Injector injector, Class<T> instanceClass);
 }

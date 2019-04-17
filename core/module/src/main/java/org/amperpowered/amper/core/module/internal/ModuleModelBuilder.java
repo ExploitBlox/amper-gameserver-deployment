@@ -9,7 +9,6 @@ package org.amperpowered.amper.core.module.internal;
 import com.google.common.base.Preconditions;
 import java.util.Arrays;
 import java.util.Objects;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 final class ModuleModelBuilder implements ModuleModel {
 
@@ -26,67 +25,57 @@ final class ModuleModelBuilder implements ModuleModel {
     this.requires = new String[]{};
   }
 
-  @NonNull
   @Override
   public String name() {
     return this.name;
   }
 
-  @NonNull
   @Override
-  public ModuleModel withName(@NonNull String name) {
+  public ModuleModel withName(String name) {
     this.name = Preconditions.checkNotNull(name, "name cannot be null!");
     return this;
   }
 
-  @NonNull
   @Override
   public String version() {
     return this.version;
   }
 
-  @NonNull
   @Override
-  public ModuleModel withVersion(@NonNull String version) {
+  public ModuleModel withVersion(String version) {
     this.version = Preconditions.checkNotNull(version, "version cannot be null!");
     return this;
   }
 
-  @NonNull
   @Override
   public String author() {
     return this.author;
   }
 
-  @NonNull
   @Override
-  public ModuleModel withAuthor(@NonNull String author) {
+  public ModuleModel withAuthor(String author) {
     this.author = author;
     return this;
   }
 
-  @NonNull
   @Override
   public String[] requires() {
     return this.requires;
   }
 
-  @NonNull
   @Override
-  public ModuleModel withRequires(@NonNull String[] requires) {
+  public ModuleModel withRequires(String[] requires) {
     this.requires = Preconditions.checkNotNull(requires, "requires cannot be null!");
     return this;
   }
 
-  @NonNull
   @Override
   public AmperModule amperModule() {
     return this.amperModule;
   }
 
-  @NonNull
   @Override
-  public ModuleModel withAmperModule(@NonNull AmperModule amperModule) {
+  public ModuleModel withAmperModule(AmperModule amperModule) {
     this.amperModule = Preconditions.checkNotNull(amperModule, "amperModule cannot be null!");
     return this;
   }

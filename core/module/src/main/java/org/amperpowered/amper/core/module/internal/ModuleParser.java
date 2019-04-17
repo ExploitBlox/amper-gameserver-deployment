@@ -6,15 +6,11 @@
  */
 package org.amperpowered.amper.core.module.internal;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface ModuleParser {
 
-  @NonNull
   static ModuleParser vanilla() {
     return new VanillaModuleParser();
   }
 
-  @NonNull
-  ModuleModel parseModule(@NonNull Class<?> amperModuleClass);
+  ModuleModel parseModule(Class<?> amperModuleClass);
 }

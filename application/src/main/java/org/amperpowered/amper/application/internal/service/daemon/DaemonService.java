@@ -10,13 +10,11 @@ import org.amperpowered.amper.core.service.internal.ServiceLifeCycle;
 import org.amperpowered.amper.core.service.internal.annotation.BindWith;
 import org.amperpowered.amper.core.service.internal.annotation.Runnable;
 import org.amperpowered.amper.core.service.internal.annotation.Service;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 @Service("daemon")
 @BindWith(VanillaDaemonService.class)
 public interface DaemonService {
 
-  @NonNull
   static DaemonService vanilla() {
     return VanillaDaemonService.DAEMON_SERVICE;
   }

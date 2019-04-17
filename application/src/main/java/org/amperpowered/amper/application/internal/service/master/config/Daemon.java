@@ -6,29 +6,27 @@
  */
 package org.amperpowered.amper.application.internal.service.master.config;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface Daemon {
 
-  @NonNull
+
   static Daemon begin() {
     return new DaemonBuilder();
   }
 
-  @NonNull
+
   String name();
 
-  @NonNull
-  Daemon withName(@NonNull String name);
 
-  @NonNull
+  Daemon withName(String name);
+
+
   String host();
 
-  @NonNull
-  Daemon withHost(@NonNull String host);
+
+  Daemon withHost(String host);
 
   int port();
 
-  @NonNull
+
   Daemon withPort(int port);
 }

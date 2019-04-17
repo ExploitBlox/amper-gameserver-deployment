@@ -8,10 +8,8 @@ package org.amperpowered.amper.core.guice.internal;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface GuiceInjectCreator {
 
-  @NonNull
-  Injector createInjector(@NonNull AbstractModule abstractModule);
+  Injector createInjector(AbstractModule abstractModule);
 }

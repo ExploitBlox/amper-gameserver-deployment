@@ -7,23 +7,18 @@
 package org.amperpowered.amper.core.stage.internal;
 
 import java.lang.reflect.Method;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface SingleStage extends Comparable<SingleStage> {
 
-  @NonNull
   static SingleStage begin() {
     return new SingleStageBuilder();
   }
 
-  @NonNull
   Method method();
 
-  @NonNull
-  SingleStage withMethod(@NonNull Method method);
+  SingleStage withMethod(Method method);
 
   int priority();
 
-  @NonNull
   SingleStage withPriority(int priority);
 }

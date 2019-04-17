@@ -8,36 +8,26 @@ package org.amperpowered.amper.core.service.internal;
 
 import java.lang.reflect.Method;
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ServiceModel {
 
-  @NonNull
   static ServiceModel begin() {
     return new ServiceModelBuilder();
   }
 
-  @NonNull
   String name();
 
-  @NonNull
-  ServiceModel withName(@NonNull String name);
+  ServiceModel withName(String name);
 
-  @NonNull
   Class<?> bindingClass();
 
-  @NonNull
-  ServiceModel withBindingClass(@NonNull Class<?> bindingClass);
+  ServiceModel withBindingClass(Class<?> bindingClass);
 
-  @NonNull
   Optional<Method> enablingMethod();
 
-  @NonNull
-  ServiceModel withEnablingMethod(@NonNull Method enablingMethod);
+  ServiceModel withEnablingMethod(Method enablingMethod);
 
-  @NonNull
   Optional<Method> disablingMethod();
 
-  @NonNull
-  ServiceModel withDisablingMethod(@NonNull Method disablingMethod);
+  ServiceModel withDisablingMethod(Method disablingMethod);
 }

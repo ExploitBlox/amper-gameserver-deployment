@@ -7,17 +7,14 @@
 package org.amperpowered.amper.core.service.internal;
 
 import java.util.Optional;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ServiceRegistry {
 
-  @NonNull
   static ServiceRegistry vanilla() {
     return VanillaServiceRegistry.SERVICE_REGISTRY;
   }
 
-  void register(@NonNull ServiceModel serviceModel);
+  void register(ServiceModel serviceModel);
 
-  @NonNull
-  Optional<ServiceModel> serviceModel(@NonNull String name);
+  Optional<ServiceModel> serviceModel(String name);
 }
