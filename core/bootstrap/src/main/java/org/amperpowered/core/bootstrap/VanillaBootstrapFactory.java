@@ -7,10 +7,12 @@
 package org.amperpowered.core.bootstrap;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Singleton;
 import java.util.Optional;
 import org.amperpowered.core.bootstrap.internal.Bootstrap;
 import org.amperpowered.core.bootstrap.internal.BootstrapClassScanner;
 
+@Singleton
 final class VanillaBootstrapFactory implements BootstrapFactory {
 
   @Override

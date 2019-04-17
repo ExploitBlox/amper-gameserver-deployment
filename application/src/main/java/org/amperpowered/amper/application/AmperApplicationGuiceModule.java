@@ -12,6 +12,7 @@ import org.amperpowered.amper.core.module.ModuleFactory;
 import org.amperpowered.amper.core.service.ServiceFactory;
 import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.amper.core.web.WebFactory;
+import org.amperpowered.core.bootstrap.BootstrapFactory;
 
 final class AmperApplicationGuiceModule extends AbstractModule {
 
@@ -22,5 +23,6 @@ final class AmperApplicationGuiceModule extends AbstractModule {
     this.bind(StageFactory.class).toInstance(StageFactory.vanilla());
     this.bind(ModuleFactory.class).toInstance(ModuleFactory.vanilla());
     this.bind(WebFactory.class).toInstance(WebFactory.vanilla());
+    this.bind(BootstrapFactory.class).toInstance(BootstrapFactory.vanilla());
   }
 }

@@ -6,7 +6,10 @@
  */
 package org.amperpowered.amper.application;
 
+import com.google.inject.Inject;
 import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.stage.StageFactory;
+import org.amperpowered.amper.core.stage.internal.annotation.Stage;
 import org.amperpowered.core.bootstrap.BootstrapFactory;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
@@ -17,19 +20,30 @@ import org.pmw.tinylog.writers.FileWriter;
 public class AmperApplication {
 
   public static void main(String[] arguments) {
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+    guiceFactory.createInjector(new AmperApplicationGuiceModule());
+
+    Logger.info("Loading Amper application, please wait a moment...");
+
+    StageFactory stageFactory = StageFactory.vanilla();
+    stageFactory.processingStage(AmperApplication.class);
+  }
+
+  @Inject
+  private BootstrapFactory bootstrapFactory;
+
+  @Stage(0)
+  public void initializeTinyLogConfiguration() {
     Configurator.defaultConfig()
         .writer(new FileWriter("logs/amper-log.log"))
         .addWriter(new ConsoleWriter())
         .level(Level.INFO)
         .formatPattern("{date: HH:mm:ss} {level}: {message}")
         .activate();
+  }
 
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
-    guiceFactory.createInjector(new AmperApplicationGuiceModule());
-
-    Logger.info("Loading Amper application, please wait a moment...");
-
-    BootstrapFactory bootstrapFactory = BootstrapFactory.vanilla();
+  @Stage(1)
+  public void scanBootstrapClass() {
     bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
         .ifPresent(applicationBootstrap -> {
           applicationBootstrap.initialize();
