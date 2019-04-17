@@ -44,8 +44,7 @@ public class AmperApplication {
 
   @Stage(1)
   public void scanBootstrapClass() {
-    bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class)
-        .ifPresent(applicationBootstrap -> {
+    bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class).ifPresent(applicationBootstrap -> {
           applicationBootstrap.initialize();
 
           Runtime.getRuntime().addShutdownHook(new Thread(applicationBootstrap::terminate));
