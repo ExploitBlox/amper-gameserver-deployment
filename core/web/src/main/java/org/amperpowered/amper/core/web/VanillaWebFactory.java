@@ -1,6 +1,7 @@
 package org.amperpowered.amper.core.web;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Singleton;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServer;
 import io.vertx.ext.web.Route;
@@ -13,6 +14,7 @@ import org.amperpowered.amper.core.web.internal.RouteModelMethodExecutor;
 import org.amperpowered.amper.core.web.internal.RouteModelRegistry;
 import org.pmw.tinylog.Logger;
 
+@Singleton
 final class VanillaWebFactory implements WebFactory {
 
   static final WebFactory WEB_FACTORY = new VanillaWebFactory();

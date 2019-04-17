@@ -9,6 +9,7 @@ package org.amperpowered.amper.core.service.internal;
 import com.google.common.base.Preconditions;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import org.amperpowered.amper.core.guice.GuiceFactory;
 
 final class VanillaServiceMethodInvoker implements ServiceMethodInvoker {
 
@@ -17,10 +18,14 @@ final class VanillaServiceMethodInvoker implements ServiceMethodInvoker {
     Preconditions.checkNotNull(method, "method cannot be null!");
     Preconditions.checkNotNull(bindingClass, "bindingClass cannot be null!");
 
-    try {
-      method.invoke(bindingClass.newInstance());
-    } catch (IllegalAccessException | InvocationTargetException | InstantiationException cause) {
-      cause.printStackTrace();
-    }
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+
+    guiceFactory.getInstance(bindingClass).ifPresent(object -> {
+      try {
+        method.invoke(object);
+      } catch (IllegalAccessException | InvocationTargetException cause) {
+        cause.printStackTrace();
+      }
+    });
   }
 }

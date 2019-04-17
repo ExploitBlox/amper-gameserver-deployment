@@ -7,9 +7,11 @@
 package org.amperpowered.amper.core.stage;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Singleton;
 import org.amperpowered.amper.core.stage.internal.StageClassLoader;
 import org.amperpowered.amper.core.stage.internal.StageExecutor;
 
+@Singleton
 final class VanillaStageFactory implements StageFactory {
 
   @Override

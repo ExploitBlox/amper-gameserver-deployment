@@ -9,7 +9,6 @@ package org.amperpowered.amper.core.config;
 import java.nio.file.Path;
 import java.util.Optional;
 
-
 public interface ConfigFactory {
 
   static ConfigFactory vanilla() {

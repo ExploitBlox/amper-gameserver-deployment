@@ -6,24 +6,22 @@
  */
 package org.amperpowered.amper.application;
 
-import org.amperpowered.amper.core.guice.GuiceFactory;
+import com.google.inject.Inject;
 import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.core.bootstrap.internal.Bootstrap;
 
 public class AmperApplicationBootstrap implements Bootstrap {
 
+  @Inject
+  private StageFactory stageFactory;
+
   @Override
   public void initialize() {
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
-    guiceFactory.createInjector(new AmperApplicationGuiceModule());
-
-    StageFactory stageFactory = StageFactory.vanilla();
     stageFactory.processingStage(AmperApplicationStartStage.class);
   }
 
   @Override
   public void terminate() {
-    StageFactory stageFactory = StageFactory.vanilla();
     stageFactory.processingStage(AmperApplicationTerminateStage.class);
   }
 

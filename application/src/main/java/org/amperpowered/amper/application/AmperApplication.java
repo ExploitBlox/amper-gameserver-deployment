@@ -6,6 +6,7 @@
  */
 package org.amperpowered.amper.application;
 
+import org.amperpowered.amper.core.guice.GuiceFactory;
 import org.amperpowered.core.bootstrap.BootstrapFactory;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
@@ -22,6 +23,9 @@ public class AmperApplication {
         .level(Level.INFO)
         .formatPattern("{date: HH:mm:ss} {level}: {message}")
         .activate();
+
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+    guiceFactory.createInjector(new AmperApplicationGuiceModule());
 
     Logger.info("Loading Amper application, please wait a moment...");
 

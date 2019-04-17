@@ -19,5 +19,10 @@
       <artifactId>tinylog</artifactId>
       <version>1.3.6</version>
     </dependency>
+    <dependency>
+      <groupId>org.amperpowered.amper.core</groupId>
+      <artifactId>guice</artifactId>
+      <version>2019.04.17-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>

@@ -7,6 +7,7 @@
 package org.amperpowered.amper.core.service;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Singleton;
 import java.util.Optional;
 import org.amperpowered.amper.core.service.internal.ServiceLifeCycle;
 import org.amperpowered.amper.core.service.internal.ServiceMethodInvoker;
@@ -15,6 +16,7 @@ import org.amperpowered.amper.core.service.internal.ServiceRegistry;
 import org.amperpowered.amper.core.service.internal.ServiceScanner;
 import org.pmw.tinylog.Logger;
 
+@Singleton
 final class VanillaServiceFactory implements ServiceFactory {
 
   @Override

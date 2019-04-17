@@ -8,7 +8,7 @@ package org.amperpowered.amper.core.stage.internal;
 
 import com.google.common.base.Preconditions;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import org.amperpowered.amper.core.guice.GuiceFactory;
 import org.amperpowered.amper.core.stage.internal.exception.StageExecuteException;
 
 final class VanillaStageExecutor implements StageExecutor {
@@ -17,12 +17,15 @@ final class VanillaStageExecutor implements StageExecutor {
   public void execute(SingleStage singleStage) {
     Preconditions.checkNotNull(singleStage, "singleStage cannot be null!");
 
-    try {
-      Method method = singleStage.method();
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
 
-      method.invoke(method.getDeclaringClass().newInstance());
-    } catch (IllegalAccessException | InvocationTargetException | InstantiationException cause) {
-      throw new StageExecuteException("Cannot execute the stage with id '" + singleStage.priority() + "'");
-    }
+    guiceFactory.getInstance(singleStage.method().getDeclaringClass()).ifPresent(object -> {
+      try {
+        singleStage.method().invoke(object);
+      } catch (IllegalAccessException | InvocationTargetException cause) {
+        throw new StageExecuteException("Cannot execute the stage with id '" + singleStage.priority() + "'"
+            + " because " + cause.getCause());
+      }
+    });
   }
 }

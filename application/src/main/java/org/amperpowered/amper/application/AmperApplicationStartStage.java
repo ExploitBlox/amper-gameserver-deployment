@@ -6,6 +6,7 @@
  */
 package org.amperpowered.amper.application;
 
+import com.google.inject.Inject;
 import java.nio.file.Paths;
 import org.amperpowered.amper.core.module.ModuleFactory;
 import org.amperpowered.amper.core.module.internal.AmperModule;
@@ -16,18 +17,20 @@ import org.amperpowered.amper.core.stage.internal.annotation.Stage;
 
 public class AmperApplicationStartStage {
 
+  @Inject
+  private ServiceFactory serviceFactory;
+
+  @Inject
+  private ModuleFactory moduleFactory;
+  
   @Stage(0)
   public void collectService() {
-    ServiceFactory serviceFactory = ServiceFactory.vanilla();
     serviceFactory.scanServices();
-
-    //TODO: SELECTING THE SERVICE NAME FROM CONFIGURATION
     serviceFactory.invokeService("master", ServiceLifeCycle.ENABLING);
   }
 
   @Stage(1)
   public void prepareModules() {
-    ModuleFactory moduleFactory = ModuleFactory.vanilla();
     moduleFactory.registerModulesRecurvesly(Paths.get("modules/"));
 
     for (AmperModule amperModule : moduleFactory.amperModules()) {
