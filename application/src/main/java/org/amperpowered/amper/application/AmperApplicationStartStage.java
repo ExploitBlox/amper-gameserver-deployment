@@ -22,7 +22,7 @@ public class AmperApplicationStartStage {
 
   @Inject
   private ModuleFactory moduleFactory;
-  
+
   @Stage(0)
   public void collectService() {
     serviceFactory.scanServices();
