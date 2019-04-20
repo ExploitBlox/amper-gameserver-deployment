@@ -7,8 +7,8 @@
 package org.amperpowered.amper.application;
 
 import com.google.inject.Inject;
-import java.nio.file.Paths;
-import org.amperpowered.amper.core.module.ModuleFactory;
+import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.module.ModuleProvider;
 import org.amperpowered.amper.core.module.internal.AmperModule;
 import org.amperpowered.amper.core.module.internal.context.InitialContext;
 import org.amperpowered.amper.core.service.ServiceFactory;
@@ -20,9 +20,6 @@ public class AmperApplicationStartStage {
   @Inject
   private ServiceFactory serviceFactory;
 
-  @Inject
-  private ModuleFactory moduleFactory;
-
   @Stage(0)
   public void collectService() {
     serviceFactory.scanServices();
@@ -31,10 +28,14 @@ public class AmperApplicationStartStage {
 
   @Stage(1)
   public void prepareModules() {
-    moduleFactory.registerModulesRecurvesly(Paths.get("modules/"));
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
 
-    for (AmperModule amperModule : moduleFactory.amperModules()) {
-      amperModule.initial(new InitialContext());
-    }
+    guiceFactory.getInstance(ModuleProvider.class).ifPresent(moduleProvider -> {
+      moduleProvider.registerModules();
+
+      for (AmperModule nestedModule : moduleProvider.nestedModules()) {
+        nestedModule.initial(new InitialContext());
+      }
+    });
   }
 }

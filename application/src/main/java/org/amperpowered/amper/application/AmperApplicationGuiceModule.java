@@ -8,7 +8,9 @@ package org.amperpowered.amper.application;
 
 import com.google.inject.AbstractModule;
 import org.amperpowered.amper.core.config.ConfigFactory;
-import org.amperpowered.amper.core.module.ModuleFactory;
+import org.amperpowered.amper.core.module.internal.ModuleClassParser;
+import org.amperpowered.amper.core.module.internal.ModuleClassScanner;
+import org.amperpowered.amper.core.module.internal.ModuleModelRegistry;
 import org.amperpowered.amper.core.service.ServiceFactory;
 import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.amper.core.web.WebFactory;
@@ -21,8 +23,11 @@ final class AmperApplicationGuiceModule extends AbstractModule {
     this.bind(ConfigFactory.class).toInstance(ConfigFactory.vanilla());
     this.bind(ServiceFactory.class).toInstance(ServiceFactory.vanilla());
     this.bind(StageFactory.class).toInstance(StageFactory.vanilla());
-    this.bind(ModuleFactory.class).toInstance(ModuleFactory.vanilla());
     this.bind(WebFactory.class).toInstance(WebFactory.vanilla());
     this.bind(BootstrapFactory.class).toInstance(BootstrapFactory.vanilla());
+
+    this.bind(ModuleModelRegistry.class).toInstance(ModuleModelRegistry.create());
+    this.bind(ModuleClassParser.class).toInstance(ModuleClassParser.create());
+    this.bind(ModuleClassScanner.class).toInstance(ModuleClassScanner.create());
   }
 }

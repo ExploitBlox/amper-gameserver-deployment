@@ -6,20 +6,44 @@
  */
 package org.amperpowered.amper.core.module.internal;
 
+import com.google.common.base.Preconditions;
+import com.google.inject.Singleton;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
-public interface ModuleModelRegistry {
+@Singleton
+public class ModuleModelRegistry {
 
-  static ModuleModelRegistry vanilla() {
-    return VanillaModuleModelRegistry.MODULE_MODEL_REGISTRY;
+  public static ModuleModelRegistry create() {
+    return new ModuleModelRegistry();
   }
 
-  void register(ModuleModel moduleModel);
+  private static final List<ModuleModel> MODULE_MODELS = new ArrayList<>();
 
-  boolean contains(String name);
+  public void register(ModuleModel moduleModel) {
+    Preconditions.checkNotNull(moduleModel, "moduleModel cannot be null!");
 
-  Optional<ModuleModel> require(String name);
+    MODULE_MODELS.add(moduleModel);
+  }
 
-  Collection<ModuleModel> moduleIndices();
+  public boolean contains(String name) {
+    Preconditions.checkNotNull(name, "name cannot be null!");
+
+    return this.require(name).isPresent();
+  }
+
+  public Optional<ModuleModel> require(String name) {
+    Preconditions.checkNotNull(name, "name cannot be null!");
+
+    return MODULE_MODELS.stream()
+        .filter(moduleModel -> moduleModel.name().equalsIgnoreCase(name))
+        .findFirst();
+  }
+
+  public Collection<ModuleModel> moduleModels() {
+    return Collections.unmodifiableCollection(MODULE_MODELS);
+  }
 }
