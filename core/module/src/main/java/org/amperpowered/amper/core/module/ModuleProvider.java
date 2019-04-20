@@ -9,7 +9,6 @@ package org.amperpowered.amper.core.module;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,7 +20,6 @@ import org.amperpowered.amper.core.module.internal.ModuleClassScanner;
 import org.amperpowered.amper.core.module.internal.ModuleModel;
 import org.amperpowered.amper.core.module.internal.ModuleModelRegistry;
 
-@Singleton
 public final class ModuleProvider {
 
   private ModuleModelRegistry moduleModelRegistry;
