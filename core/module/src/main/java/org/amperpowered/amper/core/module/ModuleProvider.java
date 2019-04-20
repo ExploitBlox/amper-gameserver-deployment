@@ -55,8 +55,8 @@ public final class ModuleProvider {
 
     return moduleModelRegistry.moduleModels()
         .stream()
-        .flatMap(moduleModel -> Arrays.stream(moduleModel.requiredModules().toArray()))
-        .allMatch(requiredModule -> moduleModelRegistry.require(String.valueOf(requiredModule)).isPresent());
+        .flatMap(moduleModel -> Arrays.stream(moduleModel.requiredModules().toArray(new String[]{})))
+        .allMatch(requiredModule -> moduleModelRegistry.require(requiredModule).isPresent());
   }
 
 
