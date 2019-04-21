@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.inject.Singleton;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.guice.GuiceProvider;
 
 @Singleton
 public final class ServiceMethodInvoker {
@@ -24,9 +24,9 @@ public final class ServiceMethodInvoker {
     checkNotNull(method, "method cannot be null!");
     checkNotNull(bindingClass, "bindingClass cannot be null!");
 
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+    GuiceProvider guiceProvider = GuiceProvider.create();
 
-    guiceFactory.getInstance(bindingClass).ifPresent(object -> {
+    guiceProvider.getInstance(bindingClass).ifPresent(object -> {
       try {
         method.invoke(object);
       } catch (IllegalAccessException | InvocationTargetException cause) {

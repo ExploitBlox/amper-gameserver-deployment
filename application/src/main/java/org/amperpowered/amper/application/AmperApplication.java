@@ -7,7 +7,7 @@
 package org.amperpowered.amper.application;
 
 import com.google.inject.Inject;
-import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.guice.GuiceProvider;
 import org.amperpowered.amper.core.stage.StageFactory;
 import org.amperpowered.amper.core.stage.internal.annotation.Stage;
 import org.amperpowered.core.bootstrap.BootstrapFactory;
@@ -20,8 +20,8 @@ import org.pmw.tinylog.writers.FileWriter;
 public class AmperApplication {
 
   public static void main(String[] arguments) {
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
-    guiceFactory.createInjector(new AmperApplicationGuiceModule());
+    GuiceProvider guiceProvider = GuiceProvider.create();
+    guiceProvider.createInjector(new AmperApplicationGuiceModule());
 
     Logger.info("Loading Amper application, please wait a moment...");
 
@@ -45,9 +45,9 @@ public class AmperApplication {
   @Stage(1)
   public void scanBootstrapClass() {
     bootstrapFactory.scanBootstrapClass(AmperApplicationBootstrap.class).ifPresent(applicationBootstrap -> {
-          applicationBootstrap.initialize();
+      applicationBootstrap.initialize();
 
-          Runtime.getRuntime().addShutdownHook(new Thread(applicationBootstrap::terminate));
-        });
+      Runtime.getRuntime().addShutdownHook(new Thread(applicationBootstrap::terminate));
+    });
   }
 }

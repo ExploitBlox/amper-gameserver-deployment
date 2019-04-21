@@ -8,7 +8,7 @@ package org.amperpowered.amper.core.stage.internal;
 
 import com.google.common.base.Preconditions;
 import java.lang.reflect.InvocationTargetException;
-import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.guice.GuiceProvider;
 import org.amperpowered.amper.core.stage.internal.exception.StageExecuteException;
 
 final class VanillaStageExecutor implements StageExecutor {
@@ -17,9 +17,9 @@ final class VanillaStageExecutor implements StageExecutor {
   public void execute(SingleStage singleStage) {
     Preconditions.checkNotNull(singleStage, "singleStage cannot be null!");
 
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+    GuiceProvider guiceProvider = GuiceProvider.create();
 
-    guiceFactory.getInstance(singleStage.method().getDeclaringClass()).ifPresent(object -> {
+    guiceProvider.getInstance(singleStage.method().getDeclaringClass()).ifPresent(object -> {
       try {
         singleStage.method().invoke(object);
       } catch (IllegalAccessException | InvocationTargetException cause) {

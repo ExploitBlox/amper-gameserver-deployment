@@ -8,7 +8,7 @@ package org.amperpowered.core.bootstrap.internal;
 
 import com.google.common.base.Preconditions;
 import java.util.Optional;
-import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.guice.GuiceProvider;
 import org.pmw.tinylog.Logger;
 
 final class VanillaBootstrapClassScanner implements BootstrapClassScanner {
@@ -27,7 +27,7 @@ final class VanillaBootstrapClassScanner implements BootstrapClassScanner {
 
     Logger.info("Successfully scan the bootstrap class!");
 
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
-    return guiceFactory.getInstance(bootstrapClass);
+    GuiceProvider guiceProvider = GuiceProvider.create();
+    return guiceProvider.getInstance(bootstrapClass);
   }
 }

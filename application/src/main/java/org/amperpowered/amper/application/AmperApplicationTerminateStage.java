@@ -6,7 +6,7 @@
  */
 package org.amperpowered.amper.application;
 
-import org.amperpowered.amper.core.guice.GuiceFactory;
+import org.amperpowered.amper.core.guice.GuiceProvider;
 import org.amperpowered.amper.core.module.ModuleProvider;
 import org.amperpowered.amper.core.module.internal.AmperModule;
 import org.amperpowered.amper.core.module.internal.context.TerminateContext;
@@ -16,9 +16,9 @@ public class AmperApplicationTerminateStage {
 
   @Stage(1)
   public void prepareModules() {
-    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+    GuiceProvider guiceProvider = GuiceProvider.create();
 
-    guiceFactory.getInstance(ModuleProvider.class).ifPresent(moduleProvider -> {
+    guiceProvider.getInstance(ModuleProvider.class).ifPresent(moduleProvider -> {
       moduleProvider.registerModules();
 
       for (AmperModule nestedModule : moduleProvider.nestedModules()) {

@@ -6,20 +6,36 @@
  */
 package org.amperpowered.amper.core.guice.internal;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Binding;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
 import java.util.Optional;
 
-public interface GuiceInjectController {
+public final class GuiceInjectController {
 
-  static GuiceInjectController vanilla() {
-    return new VanillaGuiceInjectController();
+  public static GuiceInjectController create() {
+    return new GuiceInjectController();
   }
 
-  <T> Optional<Binding<T>> getBinding(Injector injector, Class<T> bindingClass);
+  public <T> Optional<Binding<T>> getBinding(Injector injector, Class<T> bindingClass) {
+    Preconditions.checkNotNull(injector, "injector cannot be null!");
+    Preconditions.checkNotNull(bindingClass, "bindingClass cannot be null!");
 
-  <T> Optional<Provider<T>> getProvider(Injector injector, Class<T> providerClass);
+    return Optional.ofNullable(injector.getBinding(bindingClass));
+  }
 
-  <T> Optional<T> getInstance(Injector injector, Class<T> instanceClass);
+  public <T> Optional<Provider<T>> getProvider(Injector injector, Class<T> providerClass) {
+    Preconditions.checkNotNull(injector, "injector cannot be null!");
+    Preconditions.checkNotNull(providerClass, "providerClass cannot be null!");
+
+    return Optional.ofNullable(injector.getProvider(providerClass));
+  }
+
+  public <T> Optional<T> getInstance(Injector injector, Class<T> instanceClass) {
+    Preconditions.checkNotNull(injector, "injector cannot be null!");
+    Preconditions.checkNotNull(instanceClass, "instanceClass cannot be null!");
+
+    return Optional.ofNullable(injector.getInstance(instanceClass));
+  }
 }
