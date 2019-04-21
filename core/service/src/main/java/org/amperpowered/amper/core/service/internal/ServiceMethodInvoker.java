@@ -6,13 +6,32 @@
  */
 package org.amperpowered.amper.core.service.internal;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import com.google.inject.Singleton;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import org.amperpowered.amper.core.guice.GuiceFactory;
 
-public interface ServiceMethodInvoker {
+@Singleton
+public final class ServiceMethodInvoker {
 
-  static ServiceMethodInvoker vanilla() {
-    return new VanillaServiceMethodInvoker();
+  public static ServiceMethodInvoker create() {
+    return new ServiceMethodInvoker();
   }
 
-  void invoke(Method method, Class<?> bindingClass);
+  public void invoke(Method method, Class<?> bindingClass) {
+    checkNotNull(method, "method cannot be null!");
+    checkNotNull(bindingClass, "bindingClass cannot be null!");
+
+    GuiceFactory guiceFactory = GuiceFactory.vanilla();
+
+    guiceFactory.getInstance(bindingClass).ifPresent(object -> {
+      try {
+        method.invoke(object);
+      } catch (IllegalAccessException | InvocationTargetException cause) {
+        cause.printStackTrace();
+      }
+    });
+  }
 }

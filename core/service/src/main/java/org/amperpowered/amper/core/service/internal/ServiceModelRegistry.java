@@ -6,25 +6,31 @@
  */
 package org.amperpowered.amper.core.service.internal;
 
-import com.google.common.base.Preconditions;
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import com.google.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-final class VanillaServiceRegistry implements ServiceRegistry {
+@Singleton
+public final class ServiceModelRegistry {
 
-  static final ServiceRegistry SERVICE_REGISTRY = new VanillaServiceRegistry();
+  public static ServiceModelRegistry create() {
+    return new ServiceModelRegistry();
+  }
+
   private static final List<ServiceModel> SERVICE_MODELS = new ArrayList<>();
 
-  @Override
   public void register(ServiceModel serviceModel) {
-    Preconditions.checkNotNull(serviceModel, "serviceModel cannot be null!");
+    checkNotNull(serviceModel, "serviceModel cannot be null!");
 
     SERVICE_MODELS.add(serviceModel);
   }
 
-  @Override
-  public Optional<ServiceModel> serviceModel(String name) {
+  public Optional<ServiceModel> require(String name) {
+    checkNotNull(name, "name cannot be null!");
+
     return SERVICE_MODELS.stream()
         .filter(serviceModel -> serviceModel.name().equalsIgnoreCase(name))
         .findFirst();
