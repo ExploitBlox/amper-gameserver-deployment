@@ -36,9 +36,9 @@ public final class ModuleProvider {
   }
 
   public void registerModules() {
-    checkNotNull(this.moduleModelRegistry, "moduleModelRegistry cannot be null!");
     checkNotNull(this.moduleClassScanner, "moduleClassScanner cannot be null!");
     checkNotNull(this.moduleClassParser, "moduleClassParser cannot be null!");
+    checkNotNull(this.moduleModelRegistry, "moduleModelRegistry cannot be null!");
 
     try {
       for (Class<?> moduleClass : moduleClassScanner.scanModules()) {
