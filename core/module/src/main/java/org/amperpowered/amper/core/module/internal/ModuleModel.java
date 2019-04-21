@@ -66,7 +66,7 @@ public final class ModuleModel {
     }
   }
 
-  public static Builder newBuilder() {
+  static Builder newBuilder() {
     return new Builder();
   }
 

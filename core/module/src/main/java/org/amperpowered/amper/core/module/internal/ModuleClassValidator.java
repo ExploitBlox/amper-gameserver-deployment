@@ -13,7 +13,7 @@ import org.amperpowered.amper.core.module.internal.annotation.Requires;
 
 final class ModuleClassValidator {
 
-  public static ModuleClassValidator create() {
+  static ModuleClassValidator create() {
     return new ModuleClassValidator();
   }
 
