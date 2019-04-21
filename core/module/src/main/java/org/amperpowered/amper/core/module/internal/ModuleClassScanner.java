@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import org.amperpowered.amper.core.module.internal.annotation.Module;
 
 @Singleton
-public class ModuleClassScanner {
+public final class ModuleClassScanner {
 
   public static ModuleClassScanner create() {
     return new ModuleClassScanner();

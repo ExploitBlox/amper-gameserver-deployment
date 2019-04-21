@@ -6,6 +6,6 @@
  */
 package org.amperpowered.amper.core.module.internal.context;
 
-public class InitialContext implements Context {
+public final class InitialContext implements Context {
 
 }

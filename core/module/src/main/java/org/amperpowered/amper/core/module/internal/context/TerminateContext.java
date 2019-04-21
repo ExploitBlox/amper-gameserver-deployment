@@ -6,6 +6,6 @@
  */
 package org.amperpowered.amper.core.module.internal.context;
 
-public class TerminateContext implements Context {
+public final class TerminateContext implements Context {
 
 }

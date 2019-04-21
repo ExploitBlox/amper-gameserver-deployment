@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Singleton
-public class ModuleModelRegistry {
+public final class ModuleModelRegistry {
 
   public static ModuleModelRegistry create() {
     return new ModuleModelRegistry();

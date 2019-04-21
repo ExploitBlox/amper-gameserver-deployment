@@ -17,7 +17,7 @@ import org.amperpowered.amper.core.module.internal.annotation.Module;
 import org.amperpowered.amper.core.module.internal.annotation.Requires;
 
 @Singleton
-public class ModuleClassParser {
+public final class ModuleClassParser {
 
   public static ModuleClassParser create() {
     return new ModuleClassParser();
